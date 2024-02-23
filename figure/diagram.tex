@@ -1,0 +1,41 @@
+\documentclass[tikz,border=2mm]{standalone}
+
+\usetikzlibrary{arrows,positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2.7cm,auto,>=latex',every node/.append style={align=center},int/.style={draw, minimum size=1cm},inverter/.style={rectangle,draw,inner sep=2pt,minimum size=6mm},]
+    \node [int, ultra thick] (S)             {$S$};
+    \node [int, right=of S, ultra thick] (Es)             {$E_s$};
+    \node [int, right=of Es, ultra thick] (Is)             {$I_s$};
+    \node [int, above=of S, ultra thick] (V)             {$V$};
+    \node [int, right=of V, ultra thick] (Ev)             {$E_v$};
+    \node [int, right=of Ev, ultra thick] (Iv)             {$I_v$};
+    \node [int, above=of V, ultra thick] (P)             {$P$};
+    \node [int, right=of P, ultra thick] (Ep)             {$E_p$};
+    \node [int, right=of Ep, ultra thick] (Ip)             {$I_p$};
+    \node [shape=rectangle,draw,minimum height=8cm,minimum width=1cm, right=of Iv, ultra thick] (R)             {$R$};
+    \node [right=of Ip] (RIp)             {};
+    \node [right=of Is] (RIs)             {};
+    \path[->, ultra thick] (S) edge node [above] {Transmission} node [below] {$\lambda(t)$} (Es);
+    \path[->, ultra thick] (Es) edge node [above] {Symptoms} node [below] {$\sigma$} (Is);
+    \path[->, ultra thick] (V) edge node [above] {Transmission} node [below] {$\lambda(t)$} (Ev);
+    \path[->, ultra thick] (Ev) edge node [above] {Symptoms} node [below] {$\sigma$} (Iv);
+    \path[->, ultra thick] (P) edge node [above] {Transmission} node [below] {$(1-\mathrm{VE}_{\textrm{\tiny{inf}}}) \lambda(t)$\\Homogeneous mixing\\between\\all groups} (Ep);
+    \path[->, ultra thick] (Ep) edge node [above] {Symptoms} node [below] {$\sigma$} (Ip);
+    \path[->, ultra thick] (S) edge node [left] {Vaccination} node [right] {$\nu(t)$} (V);
+    \path[->, ultra thick] (V) edge node [left] {Protection} node [right] {$\delta$} (P);
+    \path[->, ultra thick] (Iv) edge node [above] {Recovery} node [below] {$\gamma$} (R);
+    \path[->, ultra thick] (Is) edge node [above] {Recovery} node [below] {$\gamma$} (RIs);
+    \path[->, ultra thick] (Ip) edge node [above] {Recovery} node [below] {$\gamma$} (RIp);
+    \node [right=1.25cm of Es, ultra thick] (Ts)             {};
+    \node [int, above=1.5cm of Ts, ultra thick, red, circle] (Cs)             {$C_s$};
+    \path[->, ultra thick, red] ([yshift=0.4cm]Ts.north) edge node [left] {Reporting} node [right] {$\rho$} (Cs);
+    \node [right=1.25cm of Ev, ultra thick] (Tv)             {};
+    \node [int, above=1.5cm of Tv, ultra thick, red, circle] (Cv)             {$C_v$};
+    \path[->, ultra thick, red] ([yshift=0.4cm]Tv.north) edge node [left] {Reporting} node [right] {$\rho$} (Cv);
+    \node [right=1.25cm of Ep, ultra thick] (Tp)             {};
+    \node [int, above=1.5cm of Tp, ultra thick, red, circle] (Cp)             {$C_p$};
+    \path[->, ultra thick, red] ([yshift=0.4cm]Tp.north) edge node [left] {Reporting} node [right] {$(1-\mathrm{VE}_{\textrm{\tiny{symp}}})\rho$} (Cp);
+\end{tikzpicture}
+\end{document}

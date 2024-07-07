@@ -123,7 +123,7 @@ We analyzed a daily time series of mumps cases and the numbers of MMR vaccine do
 The University of Iowa had an undergraduate population of 20,496 during the 2015--2016 academic year and a mandatory two-dose MMR vaccine policy in place since 2012 with few exemptions.
 Ninety-eight percent of students between 18--24 years of age had received at least two doses of MMR vaccine before the outbreak (1.8\% had received 3 doses and 0.1\% had received 4 dosese of MMR before the outbreak) \citep{cardemil2017effectiveness}.
 Mumps cases were classified according to the Council of State and Territorial Epidemiologists case definition \citep{casedef}. 
-The MMR vaccination campaign during the outbreak targeted students under 25 years through 8 free vaccination clinics,  held from November 10--19, 2015. 
+The MMR vaccination campaign during the outbreak targeted students under 25 years through 8 free vaccination clinics, held from November 10--19, 2015. 
 Overall, 259 mumps cases were identified and 4790 MMR vaccine doses were administered, of which 97\% were deemed to be third doses \citep{cardemil2017effectiveness}.
 The student data used for this analysis (and also by \cite{cardemil2017effectiveness}) were restricted to those aged 18 to 24 years by the start of the first clinic. 
 
@@ -145,17 +145,33 @@ The red line and area represent the cumulative number and proportion of third do
 \subsection{Transmission model}
 
 Our primary goal was to estimate the vaccine effectiveness (VE) of MMR3.
+To do so, we need to be able to account for the waned effects of MMR2 as well as the effects of MMR3.
+There are broadly two approaches to modeling vaccine failures: all-or-nothing and leaky \citep{smith1984assessment}.
+The all-or-nothing approach assumes that some vaccinated individual gain complete protection against an outcome and others remain fully susceptible---this approach is generally used for modeling primary vaccine failure \citep{kanaan2002estimation}.
+The leaky model assumes that all vaccinated individuals experience a reduced probability of infection---this approach is generally used for modeling secondary vaccine failure \citep{gokhale2023disentangling}.
+
+Since reinfections occurring from MMR2 and MMR3 vaccinees both represent secondary vaccine failure \citep{vygen2016waning,kaaijk2020third,lam2020mumps}, the leaky approach is likely a better choice.
+However, there is a major computational challenge to modeling secondary vaccine failures of MMR2 using the leaky approach.
+In such cases, all MMR2 vaccinees would become infected at rate $(1-\mathrm{VE}_2) \beta I$, where $\mathrm{VE}_2$ represents the waned VE of MMR2, $\beta$ represents the transmission rate, and $I$ represents the prevalence of all infectious individuals---this would lead to a complete parameter inidentifiability between $\mathrm{VE}_2$ and $\beta$.
+
+Alternatively, we chose to adapt an explicit waning immunity approach from compartmental models, where all vaccinated individuals are assumed to be fully protected initially and return to a susceptible state at some rate.
+\cite{gokhale2023disentangling} recently showed that the waning immunity model explains mumps resurgence better than the leaky model, providing support for our modeling decision.
+Since we focused on a single outbreak, it would not be possible to directly estimate the waning rate;
+instead, we chose to divide the population into the susceptible (i.e., waned) and removed (i.e., unwaned) groups, which implicitly captures immune waning that occurred before the outbreak.
+MMR3 is modeled based on the leaky approach.
+Many other studies evaluating vaccine effects have also adopted a combination of waning and leaky immunity \citep{marziano2021effect,gokhale2023disentangling,yang2024assessing}.
+
 We hypothesized that VE could be broken down into VE against infection $\mathrm{VE}_{\textrm{\tiny{inf}}}$ and VE against symptoms $\mathrm{VE}_{\textrm{\tiny{symp}}}$, both of which are modeled using latent parameters in our transmission model.
 To compare our VE estimates with those reported by \cite{cardemil2017effectiveness}, we then calculated the combined VE that captures the effect of reduced probability of infection and symptoms: $\mathrm{VE}_{\textrm{\tiny{comb}}} = 1 - (1 - \mathrm{VE}_{\textrm{\tiny{inf}}})(1- \mathrm{VE}_{\textrm{\tiny{symp}}})$.
 The individual estimates must be interpreted with care, especially because the MMR vaccine has not been evaluated for protection against mumps infection. 
 
 We used a discrete-time, deterministic compartmental model to characterize the spread of mumps at the University of Iowa (Supplementary Figure S1).
 The population was divided into 10 compartments depending on the MMR3 vaccination status (susceptible $S$, vaccinated $V$, and protected $P$) and infection status (exposed $E_i$ and infectious $I_i$ for $i = s, v, p$ and recovered $R$); we assumed homogeneous mixing and transmission between these groups.
-At the beginning of the outbreak, we assumed that all students had received two doses of MMR vaccine---among them, a proportion $S(0)$ was assumed to be susceptible $S$ to infection due to waned immunity.
+At the beginning of the outbreak, we assumed that all students had received two doses of MMR vaccine---among them, a proportion $S(0)$ was assumed to be susceptible $S$ to infection due to waned immunity (i.e., in the SEIRS sense).
 A small proportion of the population was assumed to be in the exposed $E(0)$ and infectious $I(0)$ compartments.
 The remaining proportion $R(0) = 1-S(0) - E(0) - I(0)$ was assumed to be still protected from previous vaccination and therefore not affected by additional doses.
 Immunity is likely more complex, with the degree of susceptibility to infection and subsequent transmissibility varying across vaccination and exposure history as well as current antibody levels.
-The dichotomization used in our model provides a simple approximation for waning immunity and has been widely used in epidemiological modeling, including for the inference of rate of immunity waning against mumps \citep{lewnard2018vaccine}.
+The dichotomization used in our model provides a simple approximation for waning immunity.
 
 Assuming that MMR3 was administered randomly, susceptible individuals move to the vaccinated compartment $V$, in which they are not yet protected from infection, at rate $\nu(t)$; 
 here, $\nu(t)$ is calculated by dividing the daily number of third doses administered by the total number of students.
@@ -169,20 +185,24 @@ For simplicity, we assumed that all infected individuals transmit infections at 
 \label{eq:beta}
 \end{equation}
 where $\beta(0)$ represents the baseline transmission rate, $h_i$ represents school holidays (such that $h_i(t) = 1$ if holiday $i$ is occurring at time $t$), and $r_i$ represents the effect of holiday $i$.
+We estimated the effects of each holiday separately because each holiday can have different impact on students' behavior.
+For example, students are more likely to go back home during the winter break than spring break, during which students may choose to stay on campus to prepare for upcoming exams.
+As a sensitivity analysis, we also tried fitting a model that assumes a single effect for all four holidays ($r_i = \hat{r}$); these results are presented in the Supplementary Material.
 Finally, infected individuals become immune to infection upon recovery and move to $R$ compartment.
 Mathematical details are provided in the Supplementary Material.
 
 \subsection{Observation model}
 
-To model the observation process without adding additional compartments, we assumed that the latent period is equivalent to the incubation period, meaning that infected individuals develop symptoms when they transition from $E_i$ to $I_i$ compartments.
-In reality, infectiousness begins 2 days before symptom onset, but a such short delay would likely have negligible impact on the overall inference.
-Under this assumption, the number of individuals who develop symptoms on day $t$ ($C_s(t)$, $C_v(t)$, and $C_p(t)$) is proportional to the total number of individuals that move from $E_i$ to $I_i$ compartment on day $t$ for each vaccination status $i$:
+In order to fit the model to data, we needed to model the number of individuals who develop symptoms on each day.
+Since infectiousness begins 2 days before symptom onset, the the number of individuals who develop symptoms on day $t$ ($C_s(t)$, $C_v(t)$, and $C_p(t)$) would be proportional to the total number of individuals that move from $E_i$ to $I_i$ compartment on day $t-2$ for each vaccination status $i$.
+For simplicity, we ignore this 2-day delay and model:
 \begin{align}
 C_s(t) &= \rho (1-\exp(- \sigma)) E_s(t-1)\\
 C_v(t) &= \rho (1-\exp(- \sigma)) E_v(t-1)\\
 C_p(t) &= (1- \mathrm{VE}_{\textrm{\tiny{symp}}}) \rho (1-\exp(- \sigma)) E_p(t-1)
 \end{align}
-where $\rho$ represents reporting probability.
+where $\rho$ represents reporting probability;
+since the 2-day delay between the end of latent period and symptom onset is much shorter than the overall epidemic time scale, we expect this assumption to have negligible impact on the overall inference. 
 In other words, we assumed that individuals who received MMR3 are less likely to develop symptoms and report infections than those who did not.
 Finally, the reported number of symptomatic individuals on each day was modeled using a negative-binomial likelihood:
 \begin{equation}
@@ -215,6 +235,10 @@ We assumed weakly informative priors on some model parameters to constrain the p
 otherwise, we imposed uninformative priors to test the ability to infer key parameters (VE and holiday effects) from time series data alone (Table 1).
 We ran 4 Monte Carlo chains, each with 4000 iterations and 2000 burn-in steps.
 Convergence was assessed by no divergent chains, low R-hat values ($< 1.01$), and high effective sample sizes ($>2600$ for all other parameters except for the reporting rate, which ranged between 1400--2700 effective sample sizes depending on the assumed values of the delay between vaccination and protection).
+
+To test the robustness of our inference, we also used a stochastic model to evaluate the likelihood across the posterior distribution that we obtained using the deterministic model and constructing a profile likelihood curves (Supplementary Materials).
+We compared the resulting uncertainty ranges from the stochastic model with those from the deterministic model.
+We note that this method may underestimate uncertainty because there can be parameter combinations that are not explored by the deterministic model but are consistent with the stochastic model.
 
 \begin{table}[!t]
 \begin{center}
@@ -269,9 +293,9 @@ When changes in transmission dynamics are smooth, estimates of $\mathcal{R}_{\ma
 We performed exclusion and inclusion analyses to evaluate the relative impact of vaccination on reducing transmission during the outbreak compared to school holidays.
 We refer to both vaccination and school holidays as ``interventions''.
 In the exclusion analysis, we compared the null simulations, which include all interventions, with exclusion simulations, which exclude one intervention at a time.
-We compared the relative increase in the final size of the outbreak $F$ in the absence of an intervention: $(\tsub{F}{exclusion}-\tsub{F}{null})/\tsub{F}{null}$.
+We compared the relative change in the final size of the outbreak $F$ in the absence of an intervention: $(\tsub{F}{exclusion}-\tsub{F}{null})/\tsub{F}{null}$.
 In the inclusion analysis, we compared the null simulations, which include no interventions, with inclusion simulations, which include one intervention at a time.
-We compared the relative decrease in the final sizes $F$ in the presence of an intervention: $(\tsub{F}{null}-\tsub{F}{inclusion})/\tsub{F}{null}$.
+We also compared the relative change in the final sizes $F$ in the presence of an intervention: $(\tsub{F}{inclusion}-\tsub{F}{null})/\tsub{F}{null}$.
 We focused on relative changes because their raw values depend heavily on the estimates of the reporting probability, which has large uncertainty.
 By performing the analysis across all posterior samples, we were able to integrate over parameter uncertainty in our conclusion.
 
@@ -323,38 +347,45 @@ Estimates of $\mathcal{R}_{\mathrm c}(t)$ also suggested a possibility of multip
 
 % Parameter estimates of our compartmental model fits are presented in Supplementary Figure S4.
 We found large uncertainties in many model parameters, especially in the basic reproduction number (Supplementary Figure S4A); our estimates (median: 8.7; 95\% CI: 4.5--15.9) were higher than the assumed prior distribution (median: 4.7; 95\% quantile: 1.6--10.2) but the distributions largely overlap.
+We found 19.6\% (95\% CI: 10.4\%--40.3\%) of the student population to be susceptible against mumps infection at the beginning of an outbreak;
+interestingly, this estimate is consistent with \cite{gokhale2023disentangling} who estimated 16\% of the US population over 25y to be susceptible as of 2000.
 The estimates of holiday effects varied considerably (Supplementary Figure S4B--E): Thanksgiving break (82.2\%; 95\% CI: 21.4\%--99.3\%), winter break (94.8\%; 95\% CI: 72.1\%--99.8\%), between-term break (62.3\%; 95\% CI: 5.1\%--98.1\%), and spring break (34.1\%; 95\% CI: 1.5\%--95.2\%). 
+Assuming a single value for holiday effects suggested a much stronger reduction in transmission (Supplementary Figure S5): 95.8\% (95\% CI: 77.6\%--99.9\%)
 We estimated a low reporting probability (11.2\%; 95\% CI: 4.9\%--31.2\%; Supplementary Figure S4F), but this estimate must be interpreted with care because it can be sensitive to underlying dynamical and epidemiological factors (see Discussion).
 The combined VE was 49.2\% (95\% CI: 16.0\%--88.3\%) for a mean delay of 7 days between vaccination and protection (Supplementary Figure S4G). 
 Assuming a longer delay between vaccination and protection led to similar parameter estimates overall but with greater uncertainties.
 The combined VE was 44.8\% (95\% CI: 8.0\%--86.8\%) and 40.4\% (95\% CI: 3.7\%--86.4\%) when the mean delay was 14 and 21 days, respectively (Supplementary Figure S4).
+Using a stochastic model gave broadly similar uncertainty ranges (Supplementary Figure S6).
 
-Both exclusion and inclusion analyses provided consistent estimates of impact of interventions (\fref{popimp}); for simplicity, we present the results of the exclusion analysis here.
+Both exclusion and inclusion analyses provided consistent estimates of impact of interventions (\fref{popimp}, Supplementary Figure S7); for simplicity, we present the results of the exclusion analysis here.
 We found that the 2-week winter break likely had the largest impact on final sizes of the mumps outbreak (across 99.5\% of simulations), estimating that the final size of the outbreak would have increased by 28.6\% (95\% CI: 17.0\%--36.3 \%) in the absence of the winter break.
 Thanksgiving break also had considerable impact on the final outbreak size, and in the absence of this break, we estimated outbreak size would have increased by 11.7\% (95\% CI: 2.7\%--16.1\%).
 Vaccination likely had smaller impact on the final size than Thanksgiving break, but there was large uncertainty in the proportion of cases prevented by the vaccine: 6.4\% (95\% CI: 0.3\%--20.7\%).
 Spring break (1.3\%; 95\% CI: 0.0\%--4.4\%) and between-term breaks (2.9\%; 95\% CI: 0.2\%--5.9\%) likely had little impact on the outbreak size.
 
 \begin{figure}[!th]
-\includegraphics[width=\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_effects.pdf}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf}
 \caption{
-\textbf{Population-level impact of vaccination and school holidays in preventing transmission for exclusion (A) and inclusion (B) analysis.}
-Box plots of relative increase/decrease in final outbreak size in the absence/presence of intervention.
+\textbf{Population-level impact of vaccination and school holidays in preventing transmission for exclusion analysis.}
+Box plots of relative changes in final outbreak size in the absence of intervention.
 }
 \label{fig:popimp}
+\end{center}
 \end{figure}
 
-The impact of different vaccination strategies across a wide range of assumptions about coverage, timing, VE, and mean delay between vaccination and protection is presented in \fref{strat}.
+The impact of different vaccination strategies across a wide range of assumptions about coverage and timing is presented in \fref{strat};
+in Supplementary Figure S8, we present a detailed analysis further stratified by VE and delays between vaccination and protection.
 The timing of vaccination played an important role.
 During the mumps outbreak at the University of Iowa, vaccine campaigns were held almost 80 days after the first cases were reported with roughly 23\% coverage, resulting in an estimated 6.4\% (95\% CI: 0.3\%--20.7\%) reduction in the outbreak size (as estimated from the exclusion analysis in \fref{popimp}A).
-Had the vaccine been introduced at the start of the outbreak, better outcomes could have been achieved at a 20\% coverage level (which is similar to the coverage level obtained during the real outbreak), ranging from an 11.4\% (95\% CI: 9.3\%--13.1\%) to 42.9\% (95\% CI: 36.7\%--47.5\%) reduction in outbreak size for a vaccine with 20\%--80\% effectiveness against infection with a 7-day delay between vaccination and protection.
-Overall, delays between vaccination and protection seemed to have little impact on the outcome of a vaccination strategy.
+Had the vaccine been introduced at the start of the outbreak, better outcomes could have been achieved at a 20\% coverage level (which is similar to the coverage level obtained during the real outbreak), ranging from an 11.4\% (95\% CI: 9.3\%--13.1\%) to 42.9\% (95\% CI: 36.7\%--47.5\%) reduction in outbreak size for a vaccine with 20\%--80\% effectiveness against infection with a 7-day delay between vaccination and protection (Supplementary Figure S8).
+Overall, delays between vaccination and protection seemed to have little impact on the outcome of a vaccination strategy (Supplementary Figure S8).
 
 \begin{figure}[!h]
-\includegraphics[width=\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf}
+\includegraphics[width=\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf}
 \caption{
-\textbf{Impact of different vaccination strategies in reducing transmission.}
-We simulate the model under 108 different vaccination strategies across the posterior distributions.
+\textbf{Impact of different vaccination strategies in reducing transmission for 60\% VE and 7 day delay between vaccination and protection.}
+We simulate the model under 9 different vaccination strategies across the posterior distributions.
 Then, we evaluate the impact of each vaccination strategy in decreasing the final size of the outbreak, relative to no vaccination scenario.
 Points represent median estimates.
 Error bars represent 95\% credible intervals.
@@ -371,10 +402,18 @@ We found that winter break likely had the largest impact on overall outbreak dyn
 We also found that earlier introduction of vaccination would have further reduced outbreak size, limiting the susceptibility of the student population to infection and leading to a more manageable outbreak throughout the academic year. 
 
 Our estimate of combined VE, 49.2\% (95\% CI: 16.0\%--88.3\%) 7 days after MMR3, is lower but consistent with the previous estimate by \cite{cardemil2017effectiveness} for the same interval, 60\% (95\% CI: 38.4\%--74\%).
-We did not find an increase in VE with time since MMR3 however, the credible/confidence intervals for all estimates are wide and overlap.
+Assuming longer delays between vaccination and protection still gave similar estimates for VE that are broadly consistent with previous estimates.
 Large uncertainties suggest that this outbreak alone does not provide sufficient information to fully understand the effectiveness of the third dose vaccine in controlling mumps outbreaks.
 Future studies should prioritize collecting additional data about MMR3 introduction in outbreak settings to clarify parameter estimates and reduce uncertainty in the estimation of MMR3 VE.
 % Even though the evidence for the waning immunity of the mumps vaccine is growing \citep{rasheed2019}, there is currently limited information on the real-world effectiveness of the third dose MMR vaccine
+
+Our estimate of $\mathcal R_0$, 8.7 (95\% CI: 4.5--15.9), is higher but consistent with previous estimates.
+For example, \cite{edmunds2000pre} estimated pre-vaccination $\mathcal R_0$ between 3.3 and 10.3 for different mixing assumptions from serological data.
+Similarly, \cite{farrington2001estimation} also estimated $\mathcal R_0$ between 3.3 and 25.5 for different assumptions about contact patterns from serological data.
+More recent estimates also range between 3--14 \citep{majumder2017vaccine,lewnard2018vaccine}.
+The advantage of our Bayesian approach is that it allows us to evaluate the impact of vaccination across a wide range of plausible values for $\mathcal R_0$.
+Moreover, the transmission on campus is better characterized by $\mathcal R (t)$, which we estimated to fluctuate around 1--1.5 in the beginning of an outbreak (\fref{fit}C, Supplementary Figure S3);
+this is slightly lower but consistent with an estimate by \cite{shah2022containing}, who analyzed mumps outbreak at Harvard University in 2016: 1.63.
 
 There are several limitations to our analysis. 
 First, we assumed that the underlying transmission process is deterministic. 
@@ -383,6 +422,7 @@ Indeed, large jumps in our estimates of the $\mathcal{R}_{\mathrm c}(t)$ indicat
 neglecting such stochasticity may have affected our estimates of uncertainties in VE \citep{king2015avoidable}.
 We also assumed a homogeneous population with all undergraduate students at equal risk of infection, which is unlikely to represent the real risk of mumps. 
 Congregate settings such as universities are at higher risks for mumps outbreaks, but even within a university, certain groups of students with prolonged, intense close contact are at highest risk of disease (e.g., fraternities/sororities or athletic teams). 
+In addition, many undergraduate students move to off campus housing after their first year, which can increase the amount of contacts with community members and add heterogeneity to mixing patterns---for example, in 2017, it was reported that 95\% and 15\% of freshmen and sophomores live on campus \citep{news}.
 Neglecting structured transmission and differential force of infection may also have biased our estimates of VE.
 
 Our parameter estimates are necessarily crude as we do not explicitly model subclinical cases or community transmission.
@@ -399,7 +439,7 @@ Despite these limitations, our qualitative conclusions are likely to be robust: 
 
 Overall, we found that MMR3 provided some level of individual protection and can potentially help limit mumps transmission if vaccination is introduced early during an outbreak.  
 However, our analysis also shows that physical distancing (i.e., school breaks) can play an important role in interrupting mumps transmission. 
-While school breaks cannot be implemented randomly, early detection of cases and adherence to the isolation recommendations of patients diagnosed with mumps are important measures to assist with control of mumps in a highly 2-dose vaccinated populations.
+While school breaks cannot be implemented randomly, early detection of cases and adherence to the isolation recommendations of patients diagnosed with mumps are important measures to assist with control of mumps in a highly 2-dose vaccinated populations \citep{shah2022containing}.
 
 \section*{Data availability}
 
@@ -413,7 +453,7 @@ The authors declare no competing interest.
 
 \section*{Supplementary Materials}
 
-\subsection*{Mathematical details}
+\subsection*{Deterministic model}
 
 During holidays (represented by $h_i(t) = 1$ if holiday $i$ is occurring at time $t$), we assume that the transmission rate is proportionally reduced by $r_i$. 
 Newly infected individuals remain exposed for an average of $1/\sigma$ days and become infectious for an average of $1/\gamma$ days.
@@ -430,7 +470,7 @@ Then, the corresponding continuous-time model is given by:
   \frac{dI_p}{dt} &= \sigma E_p - \gamma I_p\\
   \frac{dR}{dt} &= \gamma I_s + \gamma I_v + \gamma I_p\\
   \end{align}
-We discretize this model using Euler multinomial scheme \citep{he2010plug}:
+We discretize this model using Euler-multinomial scheme \citep{he2010plug}:
 \begin{align}
 \textrm{FOI}(t) &= \frac{\beta (1 - \sum_i r_i h_i(t)) I(t-\Delta t)}{N}\\
 \Delta S(t) &= \left[1- \exp(-(\textrm{FOI}(t) + \nu(t)) \Delta t )\right] S(t-\Delta t)\\
@@ -458,6 +498,54 @@ I_v(t) &= I(t-\Delta t) + N_{E_pI_p}(t) - N_{I_pR}(t)\\
 R(t) &= R(t-\Delta t) + N_{I_sR}(t) + N_{I_vR}(t) + N_{I_pR}(t)
 \end{align}
 where $\textrm{FOI}$ represent the force of infection and $N_{ij}$ represent the number of individuals moving from compartment $i$ to $j$ on a given day. We simulate this model using a time step $\Delta t$ of 1 day.
+
+\subsection*{Stochastic model}
+
+We also implemented a discrete-time stochastic model using the Euler-multinomial scheme through the R package pomp \citep{king2015statistical}:
+\begin{align}
+\textrm{FOI}(t) &= \frac{\beta (1 - \sum_i r_i h_i(t)) I(t-\Delta t)}{N}\\
+\Delta S(t) &= \mathrm{Binomial}\left(S(t-\Delta t),1- \exp(-(\textrm{FOI}(t) + \nu(t)) \Delta t )\right)\\
+N_{SE_s}(t) &= \mathrm{Binomial}\left(\Delta S(t), \frac{\textrm{FOI}(t)}{\textrm{FOI}(t) + \nu(t)} \right)\\
+N_{SV}(t) &= \Delta S(t) - N_{SE_s}(t)\\
+N_{E_sI_s}(t) &= \mathrm{Binomial}\left(E_s(t-\Delta t), 1- \exp(-\sigma \Delta t )\right)\\
+N_{I_sR}(t) &= \mathrm{Binomial}(I_s(t-\Delta t), 1- \exp(-\gamma \Delta t))\\
+\Delta V(t) &= \mathrm{Binomial}\left( S(t-\Delta t), 1- \exp(-(\textrm{FOI}(t) + \delta(t)) \Delta t )\right)\\
+N_{VE_v}(t) &= \mathrm{Binomail}\left(\Delta V(t), \frac{\textrm{FOI}(t)}{\textrm{FOI}(t) + \delta(t)}  \right) \\
+N_{VP}(t) &= \Delta V(t) -N_{VE_v}(t)  \\
+N_{E_vI_v}(t) &= \mathrm{Binomial}(E_v(t-\Delta t), 1- \exp(-\sigma \Delta t ))\\
+N_{I_vR}(t) &= \mathrm{Binomial}(I_v(t-\Delta t), 1- \exp(-\gamma \Delta t ))\\
+N_{PE_p}(t) &= \mathrm{Binomial}(P(t-\Delta t), 1-\exp(-(1-\mathrm{VE}_{\textrm{\tiny{inf}}})\textrm{FOI}(t) \Delta t))\\
+N_{E_pI_p}(t) &= \mathrm{Binomial}(E_p(t-\Delta t), 1- \exp(-\sigma \Delta t))\\
+N_{I_pR}(t) &= \mathrm{Binomial}(I_p(t-\Delta t), 1- \exp(-\gamma \Delta t))\\
+S(t) &= S(t-\Delta t) - N_{SE_s}(t) - N_{SV}(t)\\
+E_s(t) &= E(t-\Delta t) + N_{SE_s}(t) - N_{E_sI_s}(t)\\
+I_s(t) &= I(t-\Delta t) + N_{E_sI_s}(t) - N_{I_sR}(t)\\
+V(t) &= V(t-\Delta t) + N_{SV}(t) - N_{SE_v}(t) - N_{VP}(t)\\
+E_v(t) &= E(t-\Delta t) + N_{SE_v}(t) - N_{E_vI_v}(t)\\
+I_v(t) &= I(t-\Delta t) + N_{E_vI_v}(t) - N_{I_vR}(t)\\
+P(t) &= P(t-\Delta t) + N_{VP}(t) - N_{PE_p}(t)\\
+E_v(t) &= E(t-\Delta t) + N_{PE_p}(t) - N_{E_pI_p}(t)\\
+I_v(t) &= I(t-\Delta t) + N_{E_pI_p}(t) - N_{I_pR}(t)\\
+R(t) &= R(t-\Delta t) + N_{I_sR}(t) + N_{I_vR}(t) + N_{I_pR}(t)
+\end{align}
+The measurement model remains identical to the deterministic model: 
+\begin{equation}
+\textrm{reported cases on day } t \sim \mathrm{NegBin}(C_s(t) + C_v(t) + C_p(t), \theta),
+\end{equation}
+where 
+\begin{align}
+C_s(t) &= \rho (1-\exp(- \sigma)) E_s(t-1)\\
+C_v(t) &= \rho (1-\exp(- \sigma)) E_v(t-1)\\
+C_p(t) &= (1- \mathrm{VE}_{\textrm{\tiny{symp}}}) \rho (1-\exp(- \sigma)) E_p(t-1).
+\end{align}
+For simplicity, we did not fit the stochastic model to the total number of cases stratified by vaccination status and focused on the overall epidemic trajectory.
+
+By taking the posterior distribution we previously obtained from the deterministic model, we calculated likelihood for each sample using particle filtering with 2000 particles \citep{king2015statistical}.
+This step allowed us to evaluate the likelihood across realistic ranges of parameters that are consistent with data.
+Then, we constructed a profile log-likelihood curve following the approach outlined in \citep{park2021epidemiological}.
+First, for each parameter, we divided the range into 200 equispaced bins and took maximum log-likelihood in each bin.
+We then fitted a locally estimated scatterplot smoothing (LOESS) regression to maximum log-likelihoods across 200 bins to obtain a smooth profile log-likelihood curve.
+We then calculated the CIs for each parameter from the estimated profile log-likelihood curves from the LOESS regression.
 
 \subsection*{Case reproduction number}
 
@@ -520,6 +608,60 @@ VE represents vaccine effectiveness.
 }
 \label{fig:param}
 \end{figure}
+
+\pagebreak
+
+\begin{figure}[!th]
+\begin{center}
+\includegraphics[width=\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_param_avg.pdf}
+\caption{
+\textbf{Parameter estimates for the mumps outbreak at the University of Iowa assuming a single value for all holidays.}
+Black lines represent prior distributions.
+Red lines represent the posterior distribution.
+VE represents vaccine effectiveness.
+}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!h]
+\includegraphics[width=\textwidth]{../pomp/figure_pomp_loglik.pdf}
+\caption{
+\textbf{Estimated confidence intervals using a stochastic model.}
+Points represent estimates that were used to construct the profile log-likelihood curves, as explained in Supplementary Material.
+Solid curves represent the LOESS fit.
+Red dashed vertical lines represent the 95\% confidence intervals estimated from the stochastic model.
+Black dashed vertical lines represent the 95\% credible intervals estimated from the deterministic model.
+}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!th]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_effects_inclusion.pdf}
+\caption{
+\textbf{Population-level impact of vaccination and school holidays in preventing transmission for inclusion analysis.}
+Box plots of relative changes in final outbreak size in the presence of intervention.
+}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!h]
+\includegraphics[width=\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf}
+\caption{
+\textbf{Impact of different vaccination strategies in reducing transmission.}
+We simulate the model under 108 different vaccination strategies across the posterior distributions.
+Then, we evaluate the impact of each vaccination strategy in decreasing the final size of the outbreak, relative to no vaccination scenario.
+Points represent median estimates.
+Error bars represent 95\% credible intervals.
+}
+\label{fig}
+\end{figure}
+
 
 \pagebreak
 

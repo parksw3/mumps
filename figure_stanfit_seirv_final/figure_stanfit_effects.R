@@ -108,16 +108,13 @@ effects_inclusion_finalsize3 <- effects_inclusion_finalsize %>%
 
 g1 <- ggplot(effects_exclusion_finalsize2) +
   geom_boxplot(aes(type, diff, fill=type), alpha=0.8, outlier.size = 0.7, outlier.shape=1, lwd=0.7) +
-  scale_y_continuous("Relative increase in final size (%)", limits=c(0, 50), expand=c(0, 0)) +
+  scale_y_continuous("Relative changes in final size (%)", limits=c(0, 50), expand=c(0, 0)) +
   scale_fill_viridis_d() +
-  ggtitle("A") +
   theme(
     axis.title.x = element_blank(),
     axis.text.x = element_text(hjust=1, angle=45),
-    plot.margin = margin(0.1,0.1,0.1,0.5, "cm"),
     panel.grid = element_blank(),
-    panel.border = element_blank(),
-    axis.line = element_line(size=0.7),
+    panel.border = element_rect(linewidth = 1),
     legend.position = "none"
   )
 
@@ -129,21 +126,6 @@ effects_exclusion_finalsize2 %>%
     upr=quantile(diff, 0.975)
   )
 
-g2 <- ggplot(effects_exclusion_finalsize3) +
-  geom_bar(aes(type, fill=as.factor(rank))) +
-  scale_y_continuous("Number of simulations", limits=c(0, 8000), expand=c(0, 0)) +
-  scale_fill_viridis_d("Ranking") +
-  ggtitle("B") +
-  theme(
-    axis.title.x = element_blank(),
-    axis.text.x = element_text(hjust=1, angle=45),
-    plot.margin = margin(0.1,0.1,0.1,0.5, "cm"),
-    panel.grid = element_blank(),
-    panel.border = element_blank(),
-    axis.line = element_line(),
-    legend.position = "right"
-  )
-
 effects_exclusion_finalsize3 %>%
   filter(type=="Excluding winter break") %>%
   ungroup %>%
@@ -152,35 +134,16 @@ effects_exclusion_finalsize3 %>%
   )
 
 g3 <- ggplot(effects_inclusion_finalsize2) +
-  geom_boxplot(aes(type, diff, fill=type), alpha=0.8, outlier.size = 0.7, outlier.shape=1, lwd=0.7) +
+  geom_boxplot(aes(type, -diff, fill=type), alpha=0.8, outlier.size = 0.7, outlier.shape=1, lwd=0.7) +
   scale_fill_viridis_d() +
-  scale_y_continuous("Relative decrease in final size (%)", limits=c(0, 50), expand=c(0, 0)) +
-  ggtitle("B") +
+  scale_y_continuous("Relative changes in final size (%)", limits=c(-50, 0), expand=c(0, 0)) +
   theme(
     axis.title.x = element_blank(),
     axis.text.x = element_text(hjust=1, angle=45),
-    plot.margin = margin(0.1,0.1,0.1,0.1, "cm"),
     panel.grid = element_blank(),
-    panel.border = element_blank(),
-    axis.line = element_line(size=0.7),
+    panel.border = element_rect(linewidth = 1),
     legend.position = "none"
   )
 
-g4 <- ggplot(effects_inclusion_finalsize3) +
-  geom_bar(aes(type, fill=as.factor(rank))) +
-  scale_y_continuous("Number of simulations", limits=c(0, 8000), expand=c(0, 0)) +
-  scale_fill_viridis_d("Ranking") +
-  ggtitle("D") +
-  theme(
-    axis.title.x = element_blank(),
-    axis.text.x = element_text(hjust=1, angle=45),
-    plot.margin = margin(0.1,0.1,0.1,0.5, "cm"),
-    panel.grid = element_blank(),
-    panel.border = element_blank(),
-    axis.line = element_line(),
-    legend.position = "none"
-  )
-
-gtot <- egg::ggarrange(g1, g3, nrow=1)
-
-ggsave("figure_stanfit_effects.pdf", gtot, width=8, height=4)
+ggsave("figure_stanfit_effects_exclusion.pdf", g1, width=6, height=4)
+ggsave("figure_stanfit_effects_inclusion.pdf", g3, width=6, height=4)

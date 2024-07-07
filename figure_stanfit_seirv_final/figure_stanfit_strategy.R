@@ -60,3 +60,21 @@ g1 <- ggplot(vaccine_summ) +
   )
   
 ggsave("figure_stanfit_strategy.pdf", g1, width=8, height=6)
+
+vaccine_summ2 <- vaccine_summ %>%
+  filter(delay=="7 day delay", 
+         efficacy=="60% VE")
+
+g2 <- ggplot(vaccine_summ2) +
+  geom_point(aes(timing, median, col=coverage), position = position_dodge(width=0.5), size=2) +
+  geom_errorbar(aes(timing, ymin=lwr, ymax=upr, col=coverage), width=0, position = position_dodge(width=0.5), lwd=0.8) +
+  scale_x_discrete("Vaccination timing (days since outbreak)") +
+  scale_y_continuous("Relative decrease in final size") +
+  scale_color_viridis_d("Vaccination\ncoverage", end=0.9) +
+  theme(
+    strip.background = element_blank(),
+    # panel.spacing = unit(0, "cm"),
+    panel.border = element_rect(size=1)
+  )
+
+ggsave("figure_stanfit_strategy_summ.pdf", g2, width=6, height=4)

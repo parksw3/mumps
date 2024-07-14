@@ -117,7 +117,7 @@ model {
   S0 ~ beta(2, 2);
   E0 ~ beta(1, 999);
   I0 ~ beta(1, 999);
-  beta0 ~ gamma(5, 5);
+  beta0 ~ gamma(15, 21);
   reduction ~ beta(1, 1);
   reporting ~ beta(1, 1);
   efficacy ~ beta(1, 1);

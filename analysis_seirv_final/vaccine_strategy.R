@@ -44,7 +44,7 @@ for (i in 1:nrow(strategy)) {
       nday=length(iowa$date),
       N=20496,
       sigma=1/17,
-      gamma=1/5,
+      gamma=1/7,
       drate=1/delay,
       nu=nu,
       holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving

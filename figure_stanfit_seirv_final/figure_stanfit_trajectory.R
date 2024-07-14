@@ -9,7 +9,7 @@ standata <- list(
   nday=nrow(iowa),
   N=20496,
   sigma=1/17,
-  gamma=1/5,
+  gamma=1/7,
   drate=1/7,
   nu=iowa$vax_doses/20496,
   holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving
@@ -47,7 +47,7 @@ Reffmat <- sapply(1:npost, function(x) {
     (1 - ee$reduction1[x] * standata$holiday1  - 
        ee$reduction2[x] * standata$holiday2  - 
        ee$reduction3[x] * standata$holiday3  - 
-       ee$reduction4[x] * standata$holiday4) * (ee$S[x,] + ee$V[x,] + (1-ee$efficacy[x]) * ee$P[x,])/20496*5
+       ee$reduction4[x] * standata$holiday4) * (ee$S[x,] + ee$V[x,] + (1-ee$efficacy[x]) * ee$P[x,])/20496*7
 })
 
 Reffdata <- data.frame(
@@ -91,7 +91,7 @@ g3 <- ggplot(Reffdata) +
   geom_line(aes(date, median), col="#EF6351", lwd=1) +
   geom_vline(xintercept=as.Date("2015-11-10"), lty=3) +
   scale_x_date("Date", expand=c(0, 0)) +
-  scale_y_continuous("Effective reproduction number", limits=c(0, 2), expand=c(0, 0)) +
+  scale_y_continuous("Effective reproduction number", limits=c(0, 2.2), expand=c(0, 0)) +
   theme(
     panel.grid = element_blank(),
     panel.border = element_blank(),

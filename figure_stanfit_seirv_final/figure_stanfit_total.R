@@ -5,21 +5,6 @@ library(egg)
 load("../data_processed/iowa.rda")
 load("../stanfit/stanfit_seirv_final.rda")
 
-standata <- list(
-  nday=nrow(iowa),
-  N=20496,
-  sigma=1/17,
-  gamma=1/5,
-  drate=1/7,
-  nu=iowa$vax_doses/20496,
-  holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving
-  holiday2=ifelse(iowa$date >= "2015-12-11" & iowa$date <= "2015-12-28", 1, 0), ## winter break
-  holiday3=ifelse(iowa$date >= "2016-01-15" & iowa$date <= "2016-01-19", 1, 0), ## between-semester
-  holiday4=ifelse(iowa$date >= "2016-03-13" & iowa$date <= "2016-03-20", 1, 0), ## spring break
-  likelihood=1L,
-  cases=iowa$onset
-)
-
 ee <- rstan::extract(stanfit_seirv_final)
 
 twototal <- data.frame(

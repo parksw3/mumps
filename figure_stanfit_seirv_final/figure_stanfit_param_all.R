@@ -91,15 +91,15 @@ I0 <- data.frame(
 )
 
 phi <- data.frame(
-  value=c(ee1[,,"phi"]*100, ee2[,,"phi"]*100, ee3[,,"phi"]*100),
+  value=c(ee1[,,"phi"], ee2[,,"phi"], ee3[,,"phi"]),
   delay=rep(c(7, 14, 21), each=8000)
 )
 
 g1 <- ggplot(beta0) +
-  stat_function(fun=function(x) dgamma(x/5, 5, 5)/5, col="black", lwd=1) +
-  geom_density(aes(value*5, col=as.factor(delay)), lwd=1) +
+  stat_function(fun=function(x) dgamma(x/7, 15, 21)/7, col="black", lwd=1) +
+  geom_density(aes(value*7, col=as.factor(delay)), lwd=1) +
   scale_x_continuous("Basic reproduction number", limits=c(0, 25)) +
-  scale_y_continuous("Probability density", expand=c(0, 0), limits=c(0, 0.25)) +
+  scale_y_continuous("Probability density", expand=c(0, 0), limits=c(0, 0.4)) +
   ggtitle("A") +
   tt
 

@@ -46,6 +46,9 @@ vaccine_summ <- vaccine_strategy3 %>%
     coverage=paste0(coverage*100, "%")
   )
 
+vaccine_summ %>%
+  filter(coverage=="20%")
+
 g1 <- ggplot(vaccine_summ) +
   geom_point(aes(timing, median, col=coverage), position = position_dodge(width=0.5), size=2) +
   geom_errorbar(aes(timing, ymin=lwr, ymax=upr, col=coverage), width=0, position = position_dodge(width=0.5), lwd=0.8) +

@@ -120,7 +120,7 @@ model {
   S0 ~ beta(2, 2);
   E0 ~ beta(1, 999);
   I0 ~ beta(1, 999);
-  beta0 ~ gamma(5, 5);
+  beta0 ~ gamma(15, 21);
   reduction1 ~ beta(1, 1);
   reduction2 ~ beta(1, 1);
   reduction3 ~ beta(1, 1);

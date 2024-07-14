@@ -24,6 +24,7 @@ stanfit_seirv_final_14 <- sampling(model,
                           data = standata,
                           iter = 4000,
                           chains = 4,
+                          cores = 4,
                           seed=101,
                           control=list(adapt_delta=0.9))
 

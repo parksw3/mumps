@@ -15,7 +15,7 @@ none <- lapply(1:npost, function(x) {
     nday=length(iowa$date),
     N=20496,
     sigma=1/17,
-    gamma=1/5,
+    gamma=1/7,
     drate=1/7,
     nu=iowa$vax_doses/20496,
     holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving
@@ -51,7 +51,7 @@ vacc <- lapply(1:npost, function(x) {
     nday=length(iowa$date),
     N=20496,
     sigma=1/17,
-    gamma=1/5,
+    gamma=1/7,
     drate=1/7,
     nu=iowa$vax_doses/20496,
     holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving
@@ -87,7 +87,7 @@ holiday1 <- lapply(1:npost, function(x) {
     nday=length(iowa$date),
     N=20496,
     sigma=1/17,
-    gamma=1/5,
+    gamma=1/7,
     drate=1/7,
     nu=iowa$vax_doses/20496,
     holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving
@@ -123,7 +123,7 @@ holiday2 <- lapply(1:npost, function(x) {
     nday=length(iowa$date),
     N=20496,
     sigma=1/17,
-    gamma=1/5,
+    gamma=1/7,
     drate=1/7,
     nu=iowa$vax_doses/20496,
     holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving
@@ -159,7 +159,7 @@ holiday3 <- lapply(1:npost, function(x) {
     nday=length(iowa$date),
     N=20496,
     sigma=1/17,
-    gamma=1/5,
+    gamma=1/7,
     drate=1/7,
     nu=iowa$vax_doses/20496,
     holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving
@@ -195,7 +195,7 @@ holiday4 <- lapply(1:npost, function(x) {
     nday=length(iowa$date),
     N=20496,
     sigma=1/17,
-    gamma=1/5,
+    gamma=1/7,
     drate=1/7,
     nu=iowa$vax_doses/20496,
     holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving

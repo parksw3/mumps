@@ -56,14 +56,14 @@ I0 <- data.frame(
 )
 
 phi <- data.frame(
-  value=c(ee1[,,"phi"]*100)
+  value=c(ee1[,,"phi"])
 )
 
 g1 <- ggplot(beta0) +
-  stat_function(fun=function(x) dgamma(x/5, 5, 5)/5, col="black", lwd=1) +
-  geom_density(aes(value*5), lwd=1, col=2) +
+  stat_function(fun=function(x) dgamma(x/7, 15, 21)/7, col="black", lwd=1) +
+  geom_density(aes(value*7), lwd=1, col=2) +
   scale_x_continuous("Basic reproduction number", limits=c(0, 25)) +
-  scale_y_continuous("Probability density", expand=c(0, 0), limits=c(0, 0.25)) +
+  scale_y_continuous("Probability density", expand=c(0, 0), limits=c(0, 0.4)) +
   ggtitle("A") +
   tt
 
@@ -139,7 +139,7 @@ g10 <- ggplot(phi) +
   ggtitle("J") +
   tt
 
-gtot <- ggarrange(g1, g2, g3, g4, g5, g6, g7, g8, g9, g10,
+gtot <- ggarrange(g1, g2, g3, g4, g5, g6, g7, g8, g9,
           nrow=3,
           draw=FALSE)
 

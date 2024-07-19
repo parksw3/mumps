@@ -22,7 +22,7 @@ g1 <- ggplot(iowa) +
   annotate("text", x=as.Date("2016-03-13"), y=9, label="Spring break", angle=90, hjust=1, vjust=-0.4, family="Times") +
   scale_x_date("Date of illness onset", limits=c(as.Date("2015-08-22"), as.Date("2016-05-15")),
                expand=c(0, 0)) +
-  scale_y_continuous("Number of symptomatic cases", limits=c(0, 10), expand=c(0, 0),
+  scale_y_continuous("Number of symptomatic cases", limits=c(0, 10.3), expand=c(0, 0),
                      breaks=0:6*2,
                      sec.axis = sec_axis(~.*500, name="Cumulative number of third dose recipients")) +
   theme(
@@ -38,7 +38,7 @@ g1 <- ggplot(iowa) +
 g1B <- (ggplot(iowa)
         + labs(x="")
         + scale_x_discrete(breaks=NULL)
-        + scale_y_continuous("Cumulative proportion of third dose recipients", expand=c(0, 0), limits=c(0, 5000/20496), position = "right")
+        + scale_y_continuous("Cumulative proportion of third dose recipients", expand=c(0, 0), limits=c(0, 5150/20496), position = "right")
         + geom_blank(aes(NA, cumsum(vax_doses)/20496))
         + theme(
           axis.line.y = element_line(color="#EF6351")

@@ -76,20 +76,18 @@ Nina B. Masters\textsuperscript{3}
 Mumps outbreaks among fully vaccinated young adults have raised questions about potential waning of immunity over time and need for a third dose of the measles, mumps, rubella (MMR) vaccine. 
 However, there are currently limited data on real-life effectiveness of the third dose MMR vaccine in preventing mumps.
 Here, we used a deterministic compartmental model to infer the effectiveness of the third dose MMR vaccine in preventing mumps cases by analyzing the mumps outbreak that occurred at the University of Iowa between August 24, 2015 and May 13, 2016. 
-The modeling approach further allowed us to evaluate the population-level impact of vaccination by different timings of vaccine administration in relation to the beginning of the outbreak and different coverage levels and to account for potential sources of biases in estimating vaccine effectiveness. 
-We found large uncertainty in vaccine effectiveness estimates: school holidays, such as the winter break, likely played important roles in preventing mumps transmission. 
-Early introduction of a third vaccine dose during a mumps outbreak can be effective in preventing transmission. 
+The modeling approach further allowed us to evaluate the population-level impact of vaccination by different timing in relation to the start of the outbreak and varied coverage levels, and to account for potential sources of bias in estimating vaccine effectiveness.
+We found large uncertainty in vaccine effectiveness estimates however, our models showed that early introduction of a third dose of MMR vaccine during a mumps outbreak can be effective in preventing transmission.  
+School holidays, such as the winter break, likely played important roles in preventing mumps transmission.  
 \\
 \newline
 \textbf{Disclaimer.} The findings and conclusions in this report are those of the authors and do not necessarily represent the official position of the Centers for Disease Control and Prevention.
 
 \section*{Significance}
-The resurgence of mumps among vaccinated young adults in the US continues to raise questions about the need for a third dose of the MMR vaccine, but existing estimates of third-dose vaccine effectiveness are limited.
-We analyzed a mumps outbreak that occurred at the University of Iowa using a mathematical modeling approach which allowed us to account for different sources of biases. 
-% We estimate that while vaccination played a role in improving protection of persons at increased risk and preventing transmission during the outbreak, its overall impact on outbreak control was uncertain. 
-% However, school holidays likely had the greatest impact on preventing mumps transmission. 
-Our model estimates that the overall impact of vaccination, as it was deployed in this outbreak, was uncertain, though vaccination likely did protect persons at increased risk and prevented some transmission of mumps. 
-Analyses varying the timing of vaccination showed that earlier rollout of vaccination could have had a substantial impact on limiting outbreak size, even with lower population uptake.
+The resurgence of mumps among vaccinated young adults in the US continues to raise questions about the need for a third dose of the MMR vaccine, but existing estimates of third-dose vaccine effectiveness against mumps are limited.
+To address this gap, we used a mathematical modeling approach to analyze a large outbreak at the University of Iowa where 3rd dose MMR was deployed. 
+Our model estimates that the overall impact of vaccination, as it was deployed in this outbreak, was modest, though vaccination did protect persons at increased risk and prevented some transmission of mumps. 
+Analyses varying the timing of vaccination showed that earlier rollout could have had a substantial impact on limiting outbreak size, even with lower population uptake.
 
 \section*{Keywords}
 Mumps, MMR3, vaccine effectiveness, mathematical modeling, Bayesian inference
@@ -101,17 +99,17 @@ Mumps, MMR3, vaccine effectiveness, mathematical modeling, Bayesian inference
 Mumps is an acute, vaccine-preventable viral disease, which typically presents with the swelling of the salivary parotid gland \citep{hviid2008mumps}.
 It is transmitted by respiratory or salivary droplets.
 Before introduction of vaccination, peak incidence was among children aged 5–9 years \citep{galazka1999mumps}.
-Since the introduction of the mumps vaccine in 1967 nationwide in the United States (U.S.)---followed by the recommendation for routine second dose of the measles, mumps, rubella (MMR) vaccine in 1989 for measles prevention---U.S. mumps cases decreased by more than 99\% by early 2000s \citep{mclean2013prevention}.
-However, cases and outbreaks have resurged in the U.S. \citep{ogbuanu2012impact,nelson2013epidemiology,cardemil2017effectiveness,wohl2020combining,lo2021influenza} and other industrialized countries since mid-2000s, particularly among young adults despite high vaccination rates \citep{aasheim2014outbreak,vygen2016waning}.
+Since the introduction of the mumps vaccine in 1967 nationwide in the United States (U.S.)---followed by the recommendation for routine second dose of the measles, mumps, rubella (MMR) vaccine in 1989 for measles prevention---U.S. mumps cases decreased by more than 99\% \citep{mclean2013prevention}.
+However, cases and outbreaks have resurged in the U.S. \citep{ogbuanu2012impact,nelson2013epidemiology,cardemil2017effectiveness,wohl2020combining,lo2021influenza} and other industrialized countries since the mid-2000s, particularly among young adults, despite high vaccination rates \citep{aasheim2014outbreak,vygen2016waning}.
 Mumps resurgence among highly vaccinated populations has been postulated to be caused by lower levels of vaccine-induced antibodies against the circulating wild-type genotype G virus strains compared with the live-attenuated vaccine genotype A virus strain (antigenic mismatch) \citep{peltola2007mumps,rubin2008antibody}, and/or from decreased immunity over time following vaccination (waning immunity) \citep{lewnard2018vaccine,seagle2018measles,gokhale2023disentangling}, both of which may reduce vaccine effectiveness (VE).
 
-The resurgence of mumps outbreaks has raised questions about the need for third dose of the MMR vaccine.
+The resurgence of mumps outbreaks has raised questions about the need for a third dose of the MMR vaccine.
 In a review of the evidence, the Advisory Committee on Immunization Practices \citep{marin2018recommendation} identified three studies that reported lower attack rates among third dose MMR (MMR3) recipients compared to two-dose (MMR2) recipients during ongoing outbreaks \citep{ogbuanu2012impact,nelson2013epidemiology,cardemil2017effectiveness}, but only one found a statistically significant difference \citep{cardemil2017effectiveness}. 
 Several studies reported significant increases in mumps antibody levels one month after MMR3 with decrease at one year \citep{fiebelkorn2014mumps,latner2017mumps,kaaijk2020third};
 in addition, Kaaijk et al. reported that the antibody levels at one year were still higher than the baseline, suggesting a potential longer benefit than previously assumed. 
-However, data on the effectiveness of the third dose MMR, including over time, remains limited.
+However, data on the effectiveness of the third dose MMR, including over time, remain limited.
 
-Based on a mumps outbreak at the University of Iowa, \cite{cardemil2017effectiveness} previously estimated that students who had received three doses of MMR vaccine were at 78.1\% (95\% CI: 60.9\%--87.8\%) lower risk of mumps disease 28 days after vaccination than those who had received two doses.
+Based on a mumps outbreak at the University of Iowa, \cite{cardemil2017effectiveness} previously estimated that students who had received three doses of MMR vaccine were at 78.1\% (95\% CI: 60.9\%--87.8\%) lower risk of mumps disease 28 days after vaccination than those who had previously received two doses.
 However, this estimate did not consider the differences in forces of infection between the two groups, the effect of school holidays in preventing transmission, or the effectiveness of the third dose in preventing infection. 
 
 In this study, we analyzed the mumps outbreak at the University of Iowa to infer the effectiveness of the third dose of MMR vaccine in preventing mumps using a deterministic mathematical model that allowed us to evaluate the population-level impact of vaccination by timing of vaccine administration and coverage and tease apart the impact of vaccination and school holidays.
@@ -122,11 +120,11 @@ In this study, we analyzed the mumps outbreak at the University of Iowa to infer
 
 We analyzed a daily time series of mumps cases and the numbers of MMR vaccine doses administered during the University of Iowa mumps outbreak, August 24, 2015--May 13, 2016 (\fref{data}).
 The University of Iowa had an undergraduate population of 20,496 during the 2015--2016 academic year and a mandatory two-dose MMR vaccine policy in place since 2012 with few exemptions.
-Ninety-eight percent of students between 18--24 years of age had received at least two doses of MMR vaccine before the outbreak (1.8\% had received 3 doses and 0.1\% had received 4 doses of MMR before the outbreak) \citep{cardemil2017effectiveness}.
+Ninety-eight percent of students between 18--24 years of age had received at least two doses of MMR vaccine before the outbreak (1.8\% had received 3 doses and 0.1\% had received 4 doses) \citep{cardemil2017effectiveness}.
 Mumps cases were classified according to the Council of State and Territorial Epidemiologists case definition \citep{casedef}. 
 The MMR vaccination campaign during the outbreak targeted students under 25 years through 8 free vaccination clinics, held from November 10--19, 2015. 
 Overall, 259 mumps cases were identified and 4790 MMR vaccine doses were administered, of which 97\% were deemed to be third doses \citep{cardemil2017effectiveness}.
-The student data used for this analysis (and also by \cite{cardemil2017effectiveness}) were restricted to those aged 18 to 24 years by the start of the first clinic. 
+The student data used for this analysis (and also by \cite{cardemil2017effectiveness}) were restricted to those aged 18---24 years by the start of the first clinic. 
 
 We also considered four major school holidays, which could have affected transmission dynamics during the outbreak (\fref{data}; \cite{iowa}): 
 Thanksgiving break (November 22--29, 2015), winter break (December 11--28, 2015), between-term break (January 15--19, 2016), and spring break (March 13--20, 2016).
@@ -145,36 +143,29 @@ The red line and area represent the cumulative number and proportion of third do
 
 \subsection{Transmission model}
 
-Our primary goal was to estimate the vaccine effectiveness (VE) of MMR3.
-To do so, we need to be able to account for the potential waning of MMR2 as well as the effectiveness of MMR3.
-There are broadly two approaches to modeling vaccine failures: all-or-nothing and leaky \citep{smith1984assessment}.
-The all-or-nothing approach assumes that some vaccinated individual gain complete protection against an outcome and others remain fully susceptible---this approach is generally used for modeling primary vaccine failure \citep{kanaan2002estimation}.
-The leaky model assumes that all vaccinated individuals experience a reduced probability of infection---this approach is generally used for modeling secondary vaccine failure \citep{gokhale2023disentangling}.
-
-Since infections of mumps occurring among vaccinated persons represent secondary vaccine failure \citep{vygen2016waning,kaaijk2020third,lam2020mumps}, the leaky approach is likely a better choice.
-However, there is a major computational challenge to modeling secondary vaccine failure using the leaky approach.
-In such cases, all MMR2 vaccinees would become infected at rate $(1-\mathrm{VE}_2) \beta I$, where $\mathrm{VE}_2$ represents the waned VE of MMR2, $\beta$ represents the transmission rate, and $I$ represents the prevalence of all infectious individuals---this would lead to a complete parameter inidentifiability between $\mathrm{VE}_2$ and $\beta$.
-
-Alternatively, we adapted an explicit waning immunity approach from compartmental models, where all vaccinated individuals are assumed to be fully protected initially and return to a susceptible state at some rate.
-\cite{gokhale2023disentangling} recently showed that the waning immunity model explains mumps resurgence better than the leaky model, providing support for our modeling decision.
-Since we focused on a single outbreak, it would not be possible to directly estimate the waning rate;
-instead, we chose to divide the population into the susceptible (i.e., waned) and removed (i.e., unwaned) groups, which implicitly captures immune waning that occurred before the outbreak.
-
-We hypothesized that VE for MMR3 could be broken down into VE against infection $\mathrm{VE}_{\textrm{\tiny{inf}}}$ and VE against symptoms $\mathrm{VE}_{\textrm{\tiny{symp}}}$, both of which are modeled using latent parameters in our transmission model.
+We hypothesized that vaccine effectiveness (VE) for MMR3 could be broken down into VE against infection $\mathrm{VE}_{\textrm{\tiny{inf}}}$ and VE against symptoms $\mathrm{VE}_{\textrm{\tiny{symp}}}$, both of which are modeled using latent parameters in our transmission model.
 To compare our VE estimates with those reported by \cite{cardemil2017effectiveness}, we then calculated the combined VE that captures the effect of reduced probability of infection and symptoms: $\mathrm{VE}_{\textrm{\tiny{comb}}} = 1 - (1 - \mathrm{VE}_{\textrm{\tiny{inf}}})(1- \mathrm{VE}_{\textrm{\tiny{symp}}})$.
 The individual estimates must be interpreted with care, especially because the MMR vaccine has not been evaluated for protection against mumps infection. 
 
 We used a discrete-time, deterministic compartmental model to characterize the spread of mumps at the University of Iowa (Supplementary Figure S1).
 The population was divided into 10 compartments depending on the MMR3 vaccination status (susceptible $S$, vaccinated $V$, and protected $P$) and infection status (exposed $E_i$ and infectious $I_i$ for $i = s, v, p$ and recovered $R$); we assumed homogeneous mixing and transmission between these groups.
-At the beginning of the outbreak, we assumed that all students had received two doses of MMR vaccine---among them, a proportion $S(0)$ was assumed to be susceptible $S$ to infection due to waned immunity (i.e., in the SEIRS sense).
+Since our primary goal was to estimate the VE of MMR3, we had to account for potential waning of MMR2 and the short term effect of MMR3. 
+To do so, we adapted an explicit waning immunity approach from compartmental models, where all vaccinated individuals are assumed to be fully protected initially and return to a susceptible state at some rate.
+Since we focused on a single outbreak, it would not be possible to directly estimate the waning rate;
+instead, we chose to divide the population into the susceptible (i.e., waned) and removed (i.e., unwaned) groups, which implicitly captures immune waning that occurred before the outbreak.
+Assuming that all students had received two doses of MMR vaccine, a proportion $S(0)$ was assumed to be susceptible $S$ to infection due to waned immunity.
 A small proportion of the population was assumed to be in the exposed $E(0)$ and infectious $I(0)$ compartments.
 The remaining proportion $R(0) = 1-S(0) - E(0) - I(0)$ was assumed to be still protected from previous vaccination and therefore not affected by additional doses.
+
 Immunity is likely more complex, with the degree of susceptibility to infection and subsequent transmissibility varying across vaccination and exposure history as well as current antibody levels.
 The dichotomization used in our model provides a simple approximation for waning immunity.
+Other approaches to modeling vaccine failures include all-or-nothing (often used to model primary vaccine failure) and leaky (often used to model secondary vaccine failure) \citep{smith1984assessment}. 
+The all-or-nothing approach assumes that some vaccinated individuals are either fully protected or fully susceptible \citep{kanaan2002estimation}, whereas the leaky approach assumes that  all vaccinated individuals experience a reduced probability of infection \citep{gokhale2023disentangling}.
+\cite{gokhale2023disentangling} recently showed that the waning immunity model explains mumps resurgence better than the leaky model, providing support for our modeling decision.
 
 Assuming that MMR3 was administered randomly, susceptible individuals move to the vaccinated compartment $V$, in which they are not yet protected from infection, at rate $\nu(t)$; 
 here, $\nu(t)$ is calculated by dividing the daily number of third doses administered by the total number of students.
-Vaccinated individuals then move to the protected compartment $P$ at rate $\delta$, in which their susceptibility to infection is reduced by the vaccine effectiveness against infection $\mathrm{VE}_{\textrm{\tiny{inf}}}$.
+Vaccinated individuals then move to the protected compartment $P$ at rate $\delta$, in which their susceptibility to infection is reduced by $\mathrm{VE}_{\textrm{\tiny{inf}}}$.
 In our model, $\mathrm{VE}_{\textrm{\tiny{inf}}}$ is modeled as a free parameter (ranging between 0--1) and estimated directly by fitting the model to the data.
 All infected individuals initially enter exposed compartments $E_i$, during which they are not yet infectious, and remain in their latent stages for an average of $1/\sigma=17$ days (i.e., duration of incubation period minus infectious period).
 Then, they enter infectious compartments $I_i$ and transmit infections for an average of $1/\gamma=7$ days (infectious period for mumps is considered 2 days before to 5 days after parotitis onset).
@@ -186,9 +177,9 @@ For simplicity, we assumed that all infected individuals transmit infections at 
 where $\beta(0)$ represents the baseline transmission rate, $h_i$ represents school holidays (such that $h_i(t) = 1$ if holiday $i$ is occurring at time $t$), and $r_i$ represents the effect of holiday $i$.
 We estimated the effects of each holiday separately because each holiday can have different impact on students' behavior.
 For example, students are more likely to go back home during the winter break than spring break, during which students may choose to stay on campus to prepare for upcoming exams.
-As a sensitivity analysis, we also tried fitting a model that assumes a single effect for all four holidays ($r_i = \hat{r}$); these results are presented in the Supplementary Material.
+As a sensitivity analysis, we also tried fitting a model that assumes a single effect for all four holidays ($r_i = \hat{r}$); these results are presented in Supplementary Materials.
 Finally, infected individuals become immune to infection upon recovery and move to $R$ compartment.
-Mathematical details are provided in the Supplementary Material.
+Mathematical details are provided in Supplementary Materials.
 
 \subsection{Observation model}
 
@@ -231,14 +222,14 @@ For the main analysis, we used an average delay between vaccination and protecti
 Then, we estimated the remaining 12 parameters: baseline transmission rate $\beta(0)$, four holiday effects ($r_1$, $r_2$, $r_3$, and $r_4$), vaccine effectiveness against infection $\mathrm{VE}_{\textrm{\tiny{inf}}}$, vaccine effectiveness against symptoms $\mathrm{VE}_{\textrm{\tiny{symp}}}$, reporting probability $\rho$, negative-binomial dispersion parameter $\theta$, and initial conditions ($S(0)$, $E(0)$, and $I(0)$).
 
 To properly incorporate parameter uncertainty, we estimated model parameters using a Bayesian framework based on Hamiltonian Monte Carlo in Stan \citep{carpenter2017stan}.
-We assumed weakly informative priors on some model parameters to constrain the parameter space within a biologically realistic limits;
+We assumed weakly informative priors on some model parameters to constrain the parameter space within biologically realistic limits;
 otherwise, we imposed uninformative priors to test the ability to infer key parameters (VE and holiday effects) from time series data alone (Table 1).
 We ran 4 Monte Carlo chains, each with 4000 iterations and 2000 burn-in steps.
 Convergence was assessed by no divergent chains, low R-hat values ($< 1.01$), and high effective sample sizes ($>2600$ for all other parameters except for the reporting rate, which ranged between 500--1000 effective sample sizes depending on the assumed values of the delay between vaccination and protection).
 
 To test the robustness of our inference, we also used a stochastic model to evaluate the likelihood across the posterior distribution that we obtained using the deterministic model and constructing profile likelihood curves (Supplementary Materials).
 We compared the resulting uncertainty ranges from the stochastic model with those from the deterministic model.
-We note that this method may underestimate uncertainty because there can be parameter combinations that are not explored by the deterministic model but are consistent with the stochastic model.
+We note that this method of calculating the uncertainty for the stochastic model may underestimate uncertainty because there can be parameter combinations that are not explored by the deterministic model but are consistent with the stochastic model.
 
 \begin{table}[!t]
 \begin{center}
@@ -285,7 +276,7 @@ We then used the estimated effective susceptible proportion to infer changes in 
 where the transmission rate $\beta(t)$ is modeled based on \eref{beta} to account for effects of holidays.
 We calculated both $\bar{S}(t)$ and $\mathcal R(t)$ across our posterior distributions to compute their medians and 95\% credible intervals (CrI).
 
-In the supplementary material, we also compared the model-based estimates of $\mathcal R(t)$ with those based on the Wallinga-Teunis approach \citep{wallinga2004different}, which estimates the case reproduction number $\mathcal{R}_{\mathrm c}(t)$, corresponding to the average number of secondary infections caused by an individual who developed symptoms on a given day. As such, $\mathcal{R}_{\mathrm c}(t)$ reflects transmission dynamics before and after the given date.
+In Supplementary Materials, we also compared the model-based estimates of $\mathcal R(t)$ with those based on the Wallinga-Teunis approach \citep{wallinga2004different}, which estimates the case reproduction number $\mathcal{R}_{\mathrm c}(t)$, corresponding to the average number of secondary infections caused by an individual who developed symptoms on a given day. As such, $\mathcal{R}_{\mathrm c}(t)$ reflects transmission dynamics before and after the given date.
 When changes in transmission dynamics are smooth, estimates of $\mathcal{R}_{\mathrm c}(t)$ based on symptom onset data are expected to closely match estimates of $\mathcal R(t)$.
 
 \subsection{Inferring the impact of vaccination in reducing transmission}
@@ -302,7 +293,7 @@ By performing the analysis across all posterior samples, we were able to integra
 \subsection{Vaccination strategies}
 
 We further explored how other vaccination strategies can impact outbreak dynamics.
-We considered 108 vaccination scenarios at three levels of vaccine coverage (20\%, 40\%, and 60\%), three timings for the campaign (0, 40, and 80 days after the beginning of the outbreak), four MMR3 VE (20\%, 40\%, 60\%, and 80\%), and three values for the mean delay between vaccination and protection (7, 14, and 21 days).
+We considered 108 vaccination scenarios at three levels of vaccine coverage (20\%, 40\%, and 60\%), three timings for the campaign (0, 40, and 80 days after the beginning of the outbreak), four MMR3 vaccine effectiveness levels (20\%, 40\%, 60\%, and 80\%), and three values for the mean delay between vaccination and protection (7, 14, and 21 days).
 For each posterior sample, we set:
 \begin{equation}
 \nu_t = \begin{cases}
@@ -346,8 +337,8 @@ Estimates of $\mathcal{R}_{\mathrm c}(t)$ suggested a potential increase in tran
 Estimates of $\mathcal{R}_{\mathrm c}(t)$ also suggested a possibility of multiple introduction events, as indicated by a large jump in $\mathcal{R}_{\mathrm c}(t)$ in the beginning of the outbreak and near the end of March.
 
 % Parameter estimates of our compartmental model fits are presented in Supplementary Figure S4.
-We found large uncertainties in many model parameters, especially in the basic reproduction number (Supplementary Figure S4A); our estimates (median: 5.9; 95\% CI: 3.8--8.6) were higher than the assumed prior distribution (median: 4.9; 95\% quantile: 2.8--7.8) but the distributions largely overlap.
-We found 28.9\% (95\% CI: 18.0\%--46.7\%) of the student population to be susceptible against mumps infection at the beginning of an outbreak.
+We found large uncertainties in many model parameters, especially in the basic reproduction number (Supplementary Figure S4A); our estimates (median: 5.9; 95\% CI: 3.8--8.6) were pretty similar to the assumed prior distribution (median: 4.9; 95\% quantile: 2.8--7.8).
+We found 28.9\% (95\% CI: 18.0\%--46.7\%) of the student population to be susceptible to mumps infection at the beginning of an outbreak.
 % interestingly, this estimate is consistent with \cite{gokhale2023disentangling} who estimated 16\% of the US population over 25y to be susceptible as of 2000.
 The estimates of holiday effects varied considerably (Supplementary Figure S4B--E): Thanksgiving break (82.5\%; 95\% CI: 22.3\%--99.3\%), winter break (94.9\%; 95\% CI: 72.9\%--99.8\%), between-term break (64.8\%; 95\% CI: 3.7\%--98.8\%), and spring break (36.1\%; 95\% CI: 1.4\%--95.2\%). 
 Assuming a single value for holiday effects suggested a much stronger reduction in transmission (Supplementary Figure S5): 96.0\% (95\% CI: 80.2\%--99.9\%).
@@ -357,7 +348,7 @@ Assuming a longer delay between vaccination and protection led to similar parame
 The combined VE was 41.4\% (95\% CI: 5.2\%--87.1\%) and 36.6\% (95\% CI: 2.4\%--84.5\%) when the mean delay was 14 and 21 days, respectively (Supplementary Figure S4).
 Using the stochastic model gave broadly similar uncertainty ranges, especially on $\mathcal R_0$ and VEs (Supplementary Figure S6).
 
-Both exclusion and inclusion analyses provided consistent estimates of impact of interventions (\fref{popimp}, Supplementary Figure S7); for simplicity, we present the results of the exclusion analysis here.
+Both exclusion and inclusion analyses provided consistent estimates of impact of interventions (\fref{popimp}, Supplementary Figure S7); for simplicity, we present the results of the exclusion analysis.
 We found that the 2-week winter break likely had the largest impact on final sizes of the mumps outbreak (across 98.3\% of simulations), estimating that the final size of the outbreak would have increased by 16.3\% (95\% CI: 10.2\%--34.5 \%) in the absence of the winter break.
 Thanksgiving break also had considerable impact on the final outbreak size, and in the absence of this break, we estimated outbreak size would have increased by 7.1\% (95\% CI: 2.1\%--13.5\%).
 Third dose MMR vaccination likely had smaller impact on the final size than Thanksgiving break, but there was large uncertainty in the proportion of cases prevented by the vaccine: 4.5\% (95\% CI: 0.2\%--20.8\%).
@@ -385,8 +376,8 @@ Overall, delays between vaccination and protection seemed to have little impact 
 \includegraphics[width=\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf}
 \caption{
 \textbf{Impact of different vaccination strategies in reducing transmission for 60\% VE and 7 day delay between vaccination and protection.}
-We simulate the model under 9 different vaccination strategies across the posterior distributions.
-Then, we evaluate the impact of each vaccination strategy in decreasing the final size of the outbreak, relative to no vaccination scenario.
+We present 9 different vaccination scenarios across the posterior distributions.
+Then, we evaluate the impact of each vaccination scenario in decreasing the final size of the outbreak, relative to no vaccination scenario.
 Points represent median estimates.
 Error bars represent 95\% credible intervals.
 }
@@ -401,23 +392,18 @@ While vaccination played a role in improving protection of persons at increased 
 We found that winter break likely had the largest impact on overall outbreak dynamics, reducing transmission and highlighting the importance of a physical separation intervention that removes susceptible persons in close contact with infected persons for more than one infectious or incubation period. 
 We also found that earlier introduction of vaccination would have further reduced outbreak size, limiting the susceptibility of the student population to infection and leading to a more manageable outbreak throughout the academic year. 
 
-Our estimate of combined VE, 47.3\% (95\% CI: 14.1\%--87.4\%) 7 days after MMR3, is lower but consistent with the previous estimate by \cite{cardemil2017effectiveness} for the same interval, 60\% (95\% CI: 38.4\%--74\%).
+Our estimate of combined VE, 47.3\% (95\% CI: 14.1\%--87.4\%) 7 days after MMR3, is lower but broadly consistent given wide credible intervals with the previous estimate by \cite{cardemil2017effectiveness} for the same interval, 60\% (95\% CI: 38.4\%--74\%).
 VE estimated by the model still gave similar estimates even when a longer delay between vaccination and effectiveness was considered.
-Large uncertainties suggest that this outbreak alone does not provide sufficient information to fully understand the effectiveness of the third dose vaccine in controlling mumps outbreaks.
+Large uncertainties suggest that this outbreak alone does not provide sufficient information to fully understand the effectiveness of the third dose MMR vaccine in controlling mumps outbreaks.
 Future studies should prioritize collecting additional data about MMR3 introduction in outbreak settings to clarify parameter estimates and reduce uncertainty in the estimation of MMR3 VE.
 % Even though the evidence for the waning immunity of the mumps vaccine is growing \citep{rasheed2019}, there is currently limited information on the real-world effectiveness of the third dose MMR vaccine
 
-Our estimate of $\mathcal R_0$, 5.9 (95\% CI: 3.8--8.6) is slightly higher, but broadly consistent with previous estimates.
-Specifically, \cite{lewnard2018vaccine} estimated $\mathcal R_0$ to be 4.79 in the US before vaccine rollout.
-However, there is large uncertainty to $\mathcal R_0$ estimates.
-\cite{edmunds2000pre} estimated pre-vaccination $\mathcal R_0$ between 3.3 and 10.3 for different mixing assumptions from serological data.
-Similarly, \cite{farrington2001estimation} also estimated $\mathcal R_0$ between 3.3 and 25.5 for different assumptions about contact patterns from serological data.
-More recently, \cite{gokhale2023disentangling} estimated $\mathcal R_0$ to be 14 (95\% CI: 12.6--15.5).
+Our estimate of $\mathcal R_0$, 5.9 (95\% CI: 3.8--8.6) is broadly consistent with previous estimates: $\mathcal R_0=4.79$  \citep{lewnard2018vaccine}, $\mathcal R_0=3.3-10.3$ \citep{edmunds2000pre}, $\mathcal R_0=3.3-25.5$ \citep{farrington2001estimation}, and $\mathcal R_0=14$ (95\% CI: 12.6-15.5) \citep{gokhale2023disentangling}.
 The advantage of our Bayesian approach is that it allows us to evaluate the impact of vaccination across a wide range of plausible values for $\mathcal R_0$.
-Moreover, the transmission on campus is better characterized by $\mathcal R (t)$, which we estimated to be 1.8 (95\% CI: 1.1--2.1) in the beginning of an outbreak (\fref{fit}C, Supplementary Figure S3);
+Moreover, the transmission on campus is better characterized by $\mathcal R (t)$, which we estimated to be 1.8 (95\% CI: 1.1--2.1) in the beginning of the outbreak (\fref{fit}C, Supplementary Figure S3);
 this is consistent with an estimate of 1.63 by \cite{shah2022containing} from the mumps outbreak at Harvard University in 2016.
 We note that our estimates of $\mathcal R_0$ are correlated with our estimates of the susceptible proportion at the beginning of the outbreak: 28.9\% (95\% CI: 18.0\%--46.7\%).
-This is consistent with \cite{gokhale2023disentangling} who estimated that 32.8\% of individuals lose vaccine-derived immunity by 18 years old from a modeling ananlysis of mumps reemergence in the US.
+This is broadly consistent with \cite{gokhale2023disentangling} who estimated that 32.8\% of individuals lose vaccine-derived immunity by 18 years of age from a modeling analysis of mumps reemergence in the US.
 
 There are several limitations to our analysis. 
 First, we assumed that the underlying transmission process is deterministic. 
@@ -426,7 +412,7 @@ Indeed, large jumps in our estimates of the $\mathcal{R}_{\mathrm c}(t)$ indicat
 neglecting such stochasticity may have affected our estimates of uncertainties in VE \citep{king2015avoidable}.
 We also assumed a homogeneous population with all undergraduate students at equal risk of infection, which is unlikely to represent the real risk of mumps. 
 Congregate settings such as universities are at higher risks for mumps outbreaks, but even within a university, certain groups of students with prolonged, intense close contact are at highest risk of disease (e.g., fraternities/sororities or athletic teams). 
-In addition, many undergraduate students move to off campus housing after their first year, which can increase the amount of contacts with community members and add heterogeneity to mixing patterns---for example, in 2017, it was reported that 95\% and 15\% of freshmen and sophomores live on campus \citep{news}.
+In addition, many undergraduate students move to off campus housing after their first year, which can increase the amount of contacts with community members and add heterogeneity to mixing patterns---for example, in 2017, it was reported that 95\% and 15\% of freshmen and sophomores, respectively, lived on campus \citep{news}.
 On the other hand, many subgroups may mix on a college campus, including classrooms, fraternities/sororities, sports teams, clubs, etc. and these groups would likely mix between years and on- and off-campus residence. 
 We do not have adequate data to appropriately inform any other assumption of mixing. 
 Neglecting structured transmission and differential force of infection may also have biased our estimates of VE.
@@ -443,9 +429,9 @@ Additionally, regarding the assumption of random administration of vaccination, 
 However, testing such hypotheses would require additional data.
 Despite these limitations, our qualitative conclusions are likely to be robust: delayed introduction of vaccination can limit its population-level impact and bias the inference of its effectiveness.
 
-Overall, we found that MMR3 provided some level of individual protection and can potentially help limit mumps transmission, especially when vaccination is introduced early during an outbreak, when lower levels of vaccination coverage are needed to reduce outbreak size.  
+Overall, we found that MMR3 provided some level of individual protection and can help limit mumps transmission, especially when vaccination is introduced early during an outbreak, when lower levels of vaccination coverage are needed to reduce outbreak size.  
 However, our analysis also shows that physical distancing (i.e., school breaks) can play an important role in interrupting mumps transmission. 
-While school breaks cannot be implemented randomly, early detection of cases and adherence to the isolation recommendations of patients diagnosed with mumps are important measures to assist with control of mumps in a highly 2-dose vaccinated populations \citep{shah2022containing}.
+While school breaks cannot be implemented randomly, early detection of cases and adherence to the isolation recommendations of patients diagnosed with mumps are important measures to assist with control of mumps in highly 2-dose vaccinated populations.
 
 \section*{Data availability}
 
@@ -516,7 +502,7 @@ N_{SV}(t) &= \Delta S(t) - N_{SE_s}(t)\\
 N_{E_sI_s}(t) &= \mathrm{Binomial}\left(E_s(t-\Delta t), 1- \exp(-\sigma \Delta t )\right)\\
 N_{I_sR}(t) &= \mathrm{Binomial}(I_s(t-\Delta t), 1- \exp(-\gamma \Delta t))\\
 \Delta V(t) &= \mathrm{Binomial}\left( S(t-\Delta t), 1- \exp(-(\textrm{FOI}(t) + \delta(t)) \Delta t )\right)\\
-N_{VE_v}(t) &= \mathrm{Binomail}\left(\Delta V(t), \frac{\textrm{FOI}(t)}{\textrm{FOI}(t) + \delta(t)}  \right) \\
+N_{VE_v}(t) &= \mathrm{Binomial}\left(\Delta V(t), \frac{\textrm{FOI}(t)}{\textrm{FOI}(t) + \delta(t)}  \right) \\
 N_{VP}(t) &= \Delta V(t) -N_{VE_v}(t)  \\
 N_{E_vI_v}(t) &= \mathrm{Binomial}(E_v(t-\Delta t), 1- \exp(-\sigma \Delta t ))\\
 N_{I_vR}(t) &= \mathrm{Binomial}(I_v(t-\Delta t), 1- \exp(-\gamma \Delta t ))\\
@@ -635,7 +621,7 @@ VE represents vaccine effectiveness.
 \includegraphics[width=\textwidth]{../pomp/figure_pomp_loglik.pdf}
 \caption{
 \textbf{Estimated confidence intervals using a stochastic model.}
-Points represent estimates that were used to construct the profile log-likelihood curves, as explained in Supplementary Material.
+Points represent estimates that were used to construct the profile log-likelihood curves, as explained in Supplementary Materials.
 Solid curves represent the LOESS fit.
 Red dashed vertical lines represent the 95\% confidence intervals estimated from the stochastic model.
 Black dashed vertical lines represent the 95\% credible intervals estimated from the deterministic model.
@@ -659,9 +645,9 @@ Box plots of relative changes in final outbreak size in the presence of interven
 \begin{figure}[!h]
 \includegraphics[width=\textwidth]{../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf}
 \caption{
-\textbf{Impact of different vaccination strategies in reducing transmission.}
-We simulate the model under 108 different vaccination strategies across the posterior distributions.
-Then, we evaluate the impact of each vaccination strategy in decreasing the final size of the outbreak, relative to no vaccination scenario.
+\textbf{Impact of different vaccination scenarios in reducing transmission.}
+We simulate the model under 108 different vaccination scenarios across the posterior distributions.
+Then, we evaluate the impact of each vaccination scenario in decreasing the final size of the outbreak, relative to no vaccination scenario.
 Points represent median estimates.
 Error bars represent 95\% credible intervals.
 }

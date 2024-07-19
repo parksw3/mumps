@@ -53,7 +53,7 @@ g1 <- ggplot(vaccine_summ) +
   geom_point(aes(timing, median, col=coverage), position = position_dodge(width=0.5), size=2) +
   geom_errorbar(aes(timing, ymin=lwr, ymax=upr, col=coverage), width=0, position = position_dodge(width=0.5), lwd=0.8) +
   scale_x_discrete("Vaccination timing (days since outbreak)") +
-  scale_y_continuous("Relative decrease in final size") +
+  scale_y_continuous("Relative decrease in final size (%)") +
   scale_color_viridis_d("Vaccination\ncoverage", end=0.9) +
   facet_grid(efficacy~delay) +
   theme(
@@ -72,7 +72,7 @@ g2 <- ggplot(vaccine_summ2) +
   geom_point(aes(timing, median, col=coverage), position = position_dodge(width=0.5), size=2) +
   geom_errorbar(aes(timing, ymin=lwr, ymax=upr, col=coverage), width=0, position = position_dodge(width=0.5), lwd=0.8) +
   scale_x_discrete("Vaccination timing (days since outbreak)") +
-  scale_y_continuous("Relative decrease in final size") +
+  scale_y_continuous("Relative decrease in final size (%)") +
   scale_color_viridis_d("Vaccination\ncoverage", end=0.9) +
   theme(
     strip.background = element_blank(),

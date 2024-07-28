@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  7 JUL 2024 17:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  17 JUL 2024 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -405,71 +405,55 @@ File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 <../figure/time_series.pdf, id=149, 867.24pt x 289.08pt>
 File: ../figure/time_series.pdf Graphic file (type pdf)
 <use ../figure/time_series.pdf>
-Package pdftex.def Info: ../figure/time_series.pdf  used on input line 203.
+Package pdftex.def Info: ../figure/time_series.pdf  used on input line 206.
 (pdftex.def)             Requested size: 469.75502pt x 156.58607pt.
-
-Overfull \hbox (8.68724pt too wide) in paragraph at lines 215--227
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
- []
-
-
-Overfull \hbox (47.2549pt too wide) in paragraph at lines 215--227
+ [4 <../figure/time_series.pdf>]
+Overfull \hbox (20.94823pt too wide) in paragraph at lines 234--249
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
-[4 <../figure/time_series.pdf>]
-Overfull \hbox (0.98038pt too wide) in paragraph at lines 233--234
-|   []   |   []   |   []   |   []   |   []   |   []   |   []
- []
-
-
-Overfull \hbox (10.0275pt too wide) in paragraph at lines 245--246
-[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
- []
-
 [5] [6] [7]
-Overfull \hbox (62.23366pt too wide) in paragraph at lines 334--358
+Overfull \hbox (68.99347pt too wide) in paragraph at lines 324--348
  [] 
  []
 
 [8] [9]
-<../figure_stanfit_seirv_final/figure_stanfit_trajectory.pdf, id=258, 578.16pt x 578.16pt>
+<../figure_stanfit_seirv_final/figure_stanfit_trajectory.pdf, id=243, 578.16pt x 578.16pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_trajectory.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_trajectory.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_trajectory.pdf  used on input line 410.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_trajectory.pdf  used on input line 400.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
- [10] [11 <../figure_stanfit_seirv_final/figure_stanfit_trajectory.pdf>]
-<../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf, id=285, 433.62pt x 289.08pt>
+
+Overfull \hbox (67.09183pt too wide) in paragraph at lines 427--438
+\OT1/cmr/m/n/12 demi-o-log-i-cal fac-tors (see Dis-cus-sion). The com-bined VE was []|   [][][]|   [][]% (95% CI: []|   [][][]|   [][]%)
+ []
+
+[10] [11 <../figure_stanfit_seirv_final/figure_stanfit_trajectory.pdf>]
+<../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf, id=266, 433.62pt x 289.08pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf  used on input line 461.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf  used on input line 449.
 (pdftex.def)             Requested size: 328.82707pt x 219.22668pt.
- [12]
-<../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf, id=295, 433.62pt x 289.08pt>
+<../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf, id=270, 433.62pt x 289.08pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf  used on input line 482.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf  used on input line 470.
 (pdftex.def)             Requested size: 469.75502pt x 313.1854pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 482--491
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 470--479
 [][][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[13 <../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf>] [14 <../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf>]
-Overfull \hbox (28.88379pt too wide) in paragraph at lines 524--525
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
+[12] [13 <../figure_stanfit_seirv_final/figure_stanfit_effects_exclusion.pdf>]
+Overfull \hbox (35.9842pt too wide) in paragraph at lines 515--516
+|   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
-
-Overfull \hbox (111.59683pt too wide) in paragraph at lines 524--525
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
- []
-
-[15]
-Overfull \hbox (4.62799pt too wide) in paragraph at lines 558--559
+[14 <../figure_stanfit_seirv_final/figure_stanfit_strategy_summ.pdf>] [15]
+Overfull \hbox (4.62799pt too wide) in paragraph at lines 551--552
 \OT1/cmr/m/n/12 All code are stored in a pub-licly avail-able GitHub repos-i-tory ([]$\OT1/cmtt/m/n/12 https : / / github . com / parksw3 /
  []
 
@@ -477,92 +461,92 @@ Overfull \hbox (4.62799pt too wide) in paragraph at lines 558--559
 Overfull \vbox (68.22481pt too high) has occurred while \output is active []
 
  [19]
-Overfull \hbox (37.31332pt too wide) in paragraph at lines 668--669
+Overfull \hbox (37.31332pt too wide) in paragraph at lines 661--662
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 [20]
-<../figure/diagram.pdf, id=463, 405.60934pt x 319.46252pt>
+<../figure/diagram.pdf, id=446, 405.60934pt x 319.46252pt>
 File: ../figure/diagram.pdf Graphic file (type pdf)
 <use ../figure/diagram.pdf>
-Package pdftex.def Info: ../figure/diagram.pdf  used on input line 686.
+Package pdftex.def Info: ../figure/diagram.pdf  used on input line 679.
 (pdftex.def)             Requested size: 469.75502pt x 369.99669pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.689 }
+l.682 }
         [21 <../figure/diagram.pdf>]
-<../figure_stanfit_seirv_final/figure_stanfit_total.pdf, id=500, 722.7pt x 361.35pt>
+<../figure_stanfit_seirv_final/figure_stanfit_total.pdf, id=483, 722.7pt x 361.35pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_total.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_total.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_total.pdf  used on input line 696.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_total.pdf  used on input line 689.
 (pdftex.def)             Requested size: 469.75502pt x 234.88023pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.702 }
+l.695 }
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.702 }
+l.695 }
         [22 <../figure_stanfit_seirv_final/figure_stanfit_total.pdf>]
-<../figure_stanfit_seirv_final/figure_stanfit_Rt_comp.pdf, id=513, 578.16pt x 433.62pt>
+<../figure_stanfit_seirv_final/figure_stanfit_Rt_comp.pdf, id=496, 578.16pt x 433.62pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_Rt_comp.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_Rt_comp.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_Rt_comp.pdf  used on input line 708.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_Rt_comp.pdf  used on input line 701.
 (pdftex.def)             Requested size: 469.75502pt x 352.31538pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.716 }
+l.709 }
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.716 }
+l.709 }
         [23 <../figure_stanfit_seirv_final/figure_stanfit_Rt_comp.pdf>]
-<../figure_stanfit_seirv_final/figure_stanfit_param_all.pdf, id=527, 867.24pt x 433.62pt>
+<../figure_stanfit_seirv_final/figure_stanfit_param_all.pdf, id=509, 867.24pt x 433.62pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_param_all.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_param_all.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_param_all.pdf  used on input line 722.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_param_all.pdf  used on input line 715.
 (pdftex.def)             Requested size: 469.75502pt x 234.87912pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.728 }
+l.721 }
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.728 }
+l.721 }
         [24 <../figure_stanfit_seirv_final/figure_stanfit_param_all.pdf>]
-<../figure_stanfit_seirv_final/figure_stanfit_param_avg.pdf, id=537, 867.24pt x 433.62pt>
+<../figure_stanfit_seirv_final/figure_stanfit_param_avg.pdf, id=519, 867.24pt x 433.62pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_param_avg.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_param_avg.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_param_avg.pdf  used on input line 736.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_param_avg.pdf  used on input line 729.
 (pdftex.def)             Requested size: 469.75502pt x 234.87912pt.
  [25 <../figure_stanfit_seirv_final/figure_stanfit_param_avg.pdf>]
-<../pomp/figure_pomp_loglik.pdf, id=549, 867.24pt x 433.62pt>
+<../pomp/figure_pomp_loglik.pdf, id=532, 867.24pt x 433.62pt>
 File: ../pomp/figure_pomp_loglik.pdf Graphic file (type pdf)
 <use ../pomp/figure_pomp_loglik.pdf>
-Package pdftex.def Info: ../pomp/figure_pomp_loglik.pdf  used on input line 749.
+Package pdftex.def Info: ../pomp/figure_pomp_loglik.pdf  used on input line 742.
 (pdftex.def)             Requested size: 469.75502pt x 234.87912pt.
  [26 <../pomp/figure_pomp_loglik.pdf>]
-<../figure_stanfit_seirv_final/figure_stanfit_effects_inclusion.pdf, id=560, 433.62pt x 289.08pt>
+<../figure_stanfit_seirv_final/figure_stanfit_effects_inclusion.pdf, id=543, 433.62pt x 289.08pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_effects_inclusion.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_effects_inclusion.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_effects_inclusion.pdf  used on input line 763.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_effects_inclusion.pdf  used on input line 756.
 (pdftex.def)             Requested size: 328.82707pt x 219.22668pt.
  [27 <../figure_stanfit_seirv_final/figure_stanfit_effects_inclusion.pdf>]
-<../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf, id=575, 578.16pt x 433.62pt>
+<../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf, id=558, 578.16pt x 433.62pt>
 File: ../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf Graphic file (type pdf)
 <use ../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf>
-Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf  used on input line 774.
+Package pdftex.def Info: ../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf  used on input line 767.
 (pdftex.def)             Requested size: 469.75502pt x 352.31538pt.
  [28 <../figure_stanfit_seirv_final/figure_stanfit_strategy.pdf>] (./mumps_diff.bbl
 Underfull \hbox (badness 4699) in paragraph at lines 9--13
@@ -593,18 +577,18 @@ Package rerunfilecheck Info: File `mumps_diff.out' has not changed.
 (rerunfilecheck)             Checksum: 07B2CFB4AA06F2EBF920333C9D40E2F1;767.
  ) 
 Here is how much of TeX's memory you used:
- 12276 strings out of 475953
- 188009 string characters out of 5789041
- 2004904 words of memory out of 5000000
- 34179 multiletter control sequences out of 15000+600000
+ 12260 strings out of 475953
+ 187629 string characters out of 5789041
+ 1986904 words of memory out of 5000000
+ 34167 multiletter control sequences out of 15000+600000
  565499 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 69i,16n,79p,911b,2197s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 69i,16n,79p,956b,2197s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></Users/sangwoopark/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy6.pfb>
-Output written on mumps_diff.pdf (32 pages, 700581 bytes).
+Output written on mumps_diff.pdf (32 pages, 846712 bytes).
 PDF statistics:
- 706 PDF objects out of 1000 (max. 8388607)
- 607 compressed objects within 7 object streams
- 177 named destinations out of 1000 (max. 500000)
+ 687 PDF objects out of 1000 (max. 8388607)
+ 589 compressed objects within 6 object streams
+ 173 named destinations out of 1000 (max. 500000)
  149 words of extra memory for PDF output out of 10000 (max. 10000000)
 

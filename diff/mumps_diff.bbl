@@ -90,11 +90,6 @@ King, A.~A., D.~Nguyen, and E.~L. Ionides (2015).
 \newblock Statistical inference for partially observed markov processes via the r package pomp.
 \newblock {\em arXiv preprint arXiv:1509.00503\/}.
 
-\bibitem[\protect\citeauthoryear{Lam, Rosen, and Zucker}{Lam et~al.}{2020}]{lam2020mumps}
-Lam, E., J.~B. Rosen, and J.~R. Zucker (2020).
-\newblock Mumps: an update on outbreaks, vaccine efficacy, and genomic diversity.
-\newblock {\em Clinical Microbiology Reviews\/}~{\em 33\/}(2), 10--1128.
-
 \bibitem[\protect\citeauthoryear{Latner, Parker~Fiebelkorn, McGrew, Williams, Coleman, McLean, Rubin, and Hickman}{Latner et~al.}{2017}]{latner2017mumps}
 Latner, D.~R., A.~Parker~Fiebelkorn, M.~McGrew, N.~J. Williams, L.~A. Coleman, H.~Q. McLean, S.~Rubin, and C.~J. Hickman (2017).
 \newblock Mumps virus nucleoprotein and hemagglutinin-specific antibody response following a third dose of measles mumps rubella vaccine.
@@ -110,20 +105,10 @@ Lo, N.~C., S.~Nyathi, L.~A. Chapman, I.~Rodriguez-Barraquer, M.~Kushel, K.~Bibbi
 \newblock Influenza, varicella, and mumps outbreaks in {US} migrant detention centers.
 \newblock {\em JAMA\/}~{\em 325\/}(2), 180--182.
 
-\bibitem[\protect\citeauthoryear{Majumder, Nguyen, Cohn, Hswen, Mekaru, and Brownstein}{Majumder et~al.}{2017}]{majumder2017vaccine}
-Majumder, M.~S., C.~M. Nguyen, E.~L. Cohn, Y.~Hswen, S.~R. Mekaru, and J.~S. Brownstein (2017).
-\newblock {Vaccine compliance and the 2016 Arkansas mumps outbreak}.
-\newblock {\em The Lancet infectious diseases\/}~{\em 17\/}(4), 361--362.
-
 \bibitem[\protect\citeauthoryear{Marin, Marlow, Moore, and Patel}{Marin et~al.}{2018}]{marin2018recommendation}
 Marin, M., M.~Marlow, K.~L. Moore, and M.~Patel (2018).
 \newblock {Recommendation of the Advisory Committee on Immunization Practices for use of a third dose of mumps virus--containing vaccine in persons at increased risk for mumps during an outbreak}.
 \newblock {\em Morbidity and Mortality Weekly Report\/}~{\em 67\/}(1), 33.
-
-\bibitem[\protect\citeauthoryear{Marziano, Guzzetta, Mammone, Riccardo, Poletti, Trentini, Manica, Siddu, Bella, Stefanelli, et~al.}{Marziano et~al.}{2021}]{marziano2021effect}
-Marziano, V., G.~Guzzetta, A.~Mammone, F.~Riccardo, P.~Poletti, F.~Trentini, M.~Manica, A.~Siddu, A.~Bella, P.~Stefanelli, et~al. (2021).
-\newblock {The effect of COVID-19 vaccination in Italy and perspectives for living with the virus}.
-\newblock {\em Nature communications\/}~{\em 12\/}(1), 7272.
 
 \bibitem[\protect\citeauthoryear{McLean, Fiebelkorn, Temte, and Wallace}{McLean et~al.}{2013}]{mclean2013prevention}
 McLean, H.~Q., A.~P. Fiebelkorn, J.~L. Temte, and G.~S. Wallace (2013).
@@ -193,10 +178,5 @@ Wallinga, J. and P.~Teunis (2004).
 Wohl, S., H.~C. Metsky, S.~F. Schaffner, A.~Piantadosi, M.~Burns, J.~A. Lewnard, B.~Chak, L.~A. Krasilnikova, K.~J. Siddle, C.~B. Matranga, et~al. (2020).
 \newblock {Combining genomics and epidemiology to track mumps virus transmission in the United States}.
 \newblock {\em PLOS biology\/}~{\em 18\/}(2), e3000611.
-
-\bibitem[\protect\citeauthoryear{Yang, Park, Saad-Roy, Ahmad, Viboud, Arinaminpathy, and Grenfell}{Yang et~al.}{2024}]{yang2024assessing}
-Yang, Q., S.~W. Park, C.~M. Saad-Roy, I.~Ahmad, C.~Viboud, N.~Arinaminpathy, and B.~T. Grenfell (2024).
-\newblock Assessing population-level target product profiles of universal human influenza a vaccines.
-\newblock {\em Epidemics\/}, 100776.
 
 \end{thebibliography}

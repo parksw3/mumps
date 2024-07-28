@@ -4,12 +4,12 @@ load("../data_processed/iowa.rda")
 model <- stan_model("../stanmodel/seirv_final.stan")
 
 standata <- list(
-  nday=nrow(iowa),
-  N=20496,
-  sigma=1/17,
-  gamma=1/7,
-  drate=1/7,
-  nu=iowa$vax_doses/20496,
+  nday=nrow(iowa),# number of days simulated
+  N=20496,# population size
+  sigma=1/17,# 1/(exposed period) 
+  gamma=1/7,# 1/(infectious period)
+  drate=1/7,# 1/(time from vaccination to protection)
+  nu=iowa$vax_doses/20496,# vaccination rate
   holiday1=ifelse(iowa$date >= "2015-11-22" & iowa$date <= "2015-11-29", 1, 0), ## thanksgiving
   holiday2=ifelse(iowa$date >= "2015-12-11" & iowa$date <= "2015-12-28", 1, 0), ## winter break
   holiday3=ifelse(iowa$date >= "2016-01-15" & iowa$date <= "2016-01-19", 1, 0), ## between-semester

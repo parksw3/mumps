@@ -2,8 +2,8 @@ simulate_seirv_final <- function(nday, # number of days simulated
                                  N, # population size
                                  sigma, # 1/(exposed period)
                                  gamma, # 1/(infectious period)
-                                 drate, # vaccination rate
-                                 nu, # 1/(time from vaccination to protection)
+                                 drate, # 1/(time from vaccination to protection)
+                                 nu, # vaccination rate
                                  holiday1, # indicator variable for holiday 1
                                  holiday2, # indicator variable for holiday 2
                                  holiday3, # indicator variable for holiday 3

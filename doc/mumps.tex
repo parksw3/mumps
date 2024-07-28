@@ -534,7 +534,7 @@ For simplicity, we did not fit the stochastic model to the total number of cases
 
 By taking the posterior distribution we previously obtained from the deterministic model, we calculated likelihood for each sample using particle filtering with 2000 particles \citep{king2015statistical}.
 This step allowed us to evaluate the likelihood across realistic ranges of parameters that are consistent with data.
-Then, we constructed a profile log-likelihood curve following the approach outlined in \citep{park2021epidemiological}.
+Then, we constructed a profile log-likelihood curve following the approach outlined in \cite{park2021epidemiological}.
 First, for each parameter, we divided the range into 200 equispaced bins and took maximum log-likelihood in each bin.
 We then fitted a locally estimated scatterplot smoothing (LOESS) regression to maximum log-likelihoods across 200 bins to obtain a smooth profile log-likelihood curve.
 We then calculated the CIs for each parameter from the estimated profile log-likelihood curves from the LOESS regression.

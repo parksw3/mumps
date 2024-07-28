@@ -1,28 +1,27 @@
-simulate_seirv_final <- function(nday,
-                                 N,
-                                 sigma,
-                                 gamma,
-                                 drate,
-                                 nu,
-                                 holiday1,
-                                 holiday2,
-                                 holiday3,
-                                 holiday4,
-                                 beta0,
-                                 theta,
-                                 reduction1,
-                                 reduction2,
-                                 reduction3,
-                                 reduction4,
-                                 S0,
-                                 E0,
-                                 I0,
-                                 V0=0,
-                                 P0=0,
-                                 reporting,
-                                 efficacy,
-                                 efficacyD,
-                                 phi) {
+simulate_seirv_final <- function(nday, # number of days simulated
+                                 N, # population size
+                                 sigma, # 1/(exposed period)
+                                 gamma, # 1/(infectious period)
+                                 drate, # vaccination rate
+                                 nu, # 1/(time from vaccination to protection)
+                                 holiday1, # indicator variable for holiday 1
+                                 holiday2, # indicator variable for holiday 2
+                                 holiday3, # indicator variable for holiday 3
+                                 holiday4, # indicator variable for holiday 4
+                                 beta0, # transmission rate
+                                 reduction1, # reduction in transmission caused by holiday 1
+                                 reduction2, # reduction in transmission caused by holiday 2
+                                 reduction3, # reduction in transmission caused by holiday 3
+                                 reduction4, # reduction in transmission caused by holiday 4
+                                 S0, # initial proportion susceptible due to waned immunity
+                                 E0, # initial proportion exposed
+                                 I0, # initial proportion infectious
+                                 V0=0, # initial proportion vaccinated but unprotected
+                                 P0=0, # initial proportion protected
+                                 reporting, # reporting probability
+                                 efficacy, # VE against infection
+                                 efficacyD, # VE against disease
+                                 phi) { # negative binomial dispersion
   S <- Es <- Is <- Ev <- Iv <- Ep <- Ip <- R <- V <- P <- betat <- onsets <- recoverys <- onsetv <- recoveryv <- onsetp <- recoveryp <- foi <- inf <- vacc <- infV <- prot <- infP <- rep(0, nday)
   
   S[1] <- N * S0

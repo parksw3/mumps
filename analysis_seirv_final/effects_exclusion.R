@@ -6,10 +6,13 @@ load("../data_processed/iowa.rda")
 load("../stanfit/stanfit_seirv_final.rda")
 source("../R/simulate_seirv_final.R")
 
+# extract posterior
 ee <- rstan::extract(stanfit_seirv_final)
 
+# number of posterior samples
 npost <- length(ee$beta0)
 
+# simulate the full model
 none <- lapply(1:npost, function(x) {
   ss <- simulate_seirv_final(
     nday=length(iowa$date),
@@ -46,6 +49,7 @@ none <- lapply(1:npost, function(x) {
 }) %>%
   bind_rows(.id="sim")
 
+# simulate without vaccination
 vacc <- lapply(1:npost, function(x) {
   ss <- simulate_seirv_final(
     nday=length(iowa$date),
@@ -82,6 +86,7 @@ vacc <- lapply(1:npost, function(x) {
 }) %>%
   bind_rows(.id="sim")
 
+# simulate without holiday 1
 holiday1 <- lapply(1:npost, function(x) {
   ss <- simulate_seirv_final(
     nday=length(iowa$date),
@@ -118,6 +123,7 @@ holiday1 <- lapply(1:npost, function(x) {
 }) %>%
   bind_rows(.id="sim")
 
+# simulate without holiday 2
 holiday2 <- lapply(1:npost, function(x) {
   ss <- simulate_seirv_final(
     nday=length(iowa$date),
@@ -154,6 +160,7 @@ holiday2 <- lapply(1:npost, function(x) {
 }) %>%
   bind_rows(.id="sim")
 
+# simulate without holiday 3
 holiday3 <- lapply(1:npost, function(x) {
   ss <- simulate_seirv_final(
     nday=length(iowa$date),
@@ -190,6 +197,7 @@ holiday3 <- lapply(1:npost, function(x) {
 }) %>%
   bind_rows(.id="sim")
 
+# simulate without holiday 4
 holiday4 <- lapply(1:npost, function(x) {
   ss <- simulate_seirv_final(
     nday=length(iowa$date),
@@ -226,6 +234,7 @@ holiday4 <- lapply(1:npost, function(x) {
 }) %>%
   bind_rows(.id="sim")
 
+# evaluate effects on cases
 effects_exclusion_cases <- bind_rows(
   none %>% 
     group_by(date) %>% 
@@ -277,6 +286,7 @@ effects_exclusion_cases <- bind_rows(
     )
 )
 
+# evaluate effects on final size
 effects_exclusion_finalsize <- bind_rows(
   none %>% 
     group_by(sim) %>% 

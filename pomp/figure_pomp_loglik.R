@@ -10,6 +10,7 @@ allparam <- pomp_loglik[,-1]
 
 llvec <- pomp_loglik$logLik
 
+# find maximum log likelihood for each bin
 ll_max <- apply(allparam, 2, function(x) {
   rr <- range(x)
   
@@ -29,26 +30,34 @@ ll_max <- apply(allparam, 2, function(x) {
 }) %>%
   bind_rows(.id="key")
 
+# calculate profile likelihood
 pf <- lapply(split(ll_max, ll_max$key), function(dd) {
+  # filter ones that are too low
   dd <- dd %>%
     filter(ll > -320)
   
+  # fit LOESS curve
   lfit <- loess(ll~value, data=dd)
   
+  # get range of parameter values
   rr <- range(dd$value)
   
+  # predict profile likelihood across the parameter range
   pred <- data.frame(
     value=seq(rr[1], rr[2], length.out=101),
     ll=predict(lfit, newdata=seq(rr[1], rr[2], length.out=101))
   )
   
+  # estimate maximum likelihood from the smooth profile 
   mm <- pred$value[which.max(pred$ll)]
   
+  # get lower CI bound
   lwr <- try(with(filter(pred, value <= mm), 
                   approx(x=ll, y=value, xout=max(llvec, na.rm=TRUE)-2))$y)
   
   if (inherits(lwr, "try-error")) lwr <- NA
   
+  # get upper CI bound
   upr <- try(with(filter(pred, value >= mm), 
                   approx(x=ll, y=value, xout=max(llvec, na.rm=TRUE)-2))$y)
   
@@ -62,6 +71,7 @@ pf <- lapply(split(ll_max, ll_max$key), function(dd) {
 }) %>%
   bind_rows(.id="key")
 
+# get posterior from deterministic model for comparison
 ss <- summary(stanfit_seirv_final)
 
 stan_summ <- data.frame(
@@ -77,13 +87,14 @@ tt <- theme(
   legend.position = "none"
 )
 
+# set up plots
 g1 <- ggplot(ll_max %>% filter(key=="beta0")) +
-  geom_point(aes(value * 5, ll), col=2, shape=1) +
-  geom_smooth(aes(value * 5, ll), method="loess", se=FALSE, col=2) +
-  geom_vline(data=pf %>% filter(key=="beta0"), aes(xintercept=lwr*5), lty=2, col=2) +
-  geom_vline(data=pf %>% filter(key=="beta0"), aes(xintercept=upr*5), lty=2, col=2) +
-  geom_vline(data=stan_summ %>% filter(key=="beta0"), aes(xintercept=lwr*5), lty=2, col=1) +
-  geom_vline(data=stan_summ %>% filter(key=="beta0"), aes(xintercept=upr*5), lty=2, col=1) +
+  geom_point(aes(value * 7, ll), col=2, shape=1) +
+  geom_smooth(aes(value * 7, ll), method="loess", se=FALSE, col=2) +
+  geom_vline(data=pf %>% filter(key=="beta0"), aes(xintercept=lwr*7), lty=2, col=2) +
+  geom_vline(data=pf %>% filter(key=="beta0"), aes(xintercept=upr*7), lty=2, col=2) +
+  geom_vline(data=stan_summ %>% filter(key=="beta0"), aes(xintercept=lwr*7), lty=2, col=1) +
+  geom_vline(data=stan_summ %>% filter(key=="beta0"), aes(xintercept=upr*7), lty=2, col=1) +
   scale_x_continuous("Basic reproduction number") +
   scale_y_continuous("Profile log-likelihood", limits=c(-320, -313.8)) +
   tt

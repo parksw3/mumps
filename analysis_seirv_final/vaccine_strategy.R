@@ -4,20 +4,29 @@ load("../data_processed/iowa.rda")
 load("../stanfit/stanfit_seirv_final.rda")
 source("../R/simulate_seirv_final.R")
 
+## extract posterior
 ee <- rstan::extract(stanfit_seirv_final)
 
+# number of posteriors
 npost <- length(ee$beta0)
+# taking only 800 posteriors because simulations take too long
 post <- seq(from=1, by=10, length.out=800)
 
+# range of VE
 efficacy <- c(20, 40, 60, 80)/100
+# range of vaccine coverage
 coverage <- c(20, 40, 60)/100
+# timing of vaccination (days since outberak)
 timing <- c(0, 40, 80)
+# delays between vaccination and protection
 delay <- c(7, 14, 21)
 
+# set up parameter grid
 strategy <- expand.grid(efficacy, coverage, timing, delay)
 
 vaccine_strategy <- vector('list', nrow(strategy))
 
+# loop simulations across scenario
 for (i in 1:nrow(strategy)) {
   print(i)
   eff <- strategy[i,1]
@@ -26,7 +35,7 @@ for (i in 1:nrow(strategy)) {
   delay <- strategy[i,4]
   
   simlist <- vector('list', npost)
-  
+  # loop simulations across posterior
   for (j in 1:length(post)) {
     x <- post[j]
     if (tt==0) {

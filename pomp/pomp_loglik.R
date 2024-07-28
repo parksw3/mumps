@@ -6,6 +6,7 @@ source("pomp_model.R")
 load("../data_processed/iowa.rda")
 load("../stanfit/stanfit_seirv_final.rda")
 
+# get posterior
 post <- extract(stanfit_seirv_final)
 
 nsamp <- 8000
@@ -15,6 +16,7 @@ which_post <- sample(8000, nsamp)
 cases <- iowa$onset
 cases[1] <- NA
 
+# set up data for pomp object
 fitdata <- data.frame(
   time=1:nrow(iowa),
   nu=iowa$vax_doses/20496,
@@ -25,6 +27,7 @@ fitdata <- data.frame(
   cases=cases
 )
 
+# set up pomp model
 pomp_arg2 <- append(pomp_arg,
                    list(data=fitdata[,c("time", "cases")],
                         t0=1,
@@ -38,6 +41,7 @@ for (i in 1:nsamp) {
   print(i)
   ww <- which_post[i]
   
+  # get parameters
   beta0 <- post$beta0[ww]
   reduction1 <- post$reduction1[ww]
   reduction2 <- post$reduction2[ww]
@@ -68,9 +72,7 @@ for (i in 1:nsamp) {
               reporting=reporting,
               phi=phi)
   
-  ss <- simulate(stoch_model,
-                 params=params)
-  
+  # evaluate particle filter likelihood
   pp <- pfilter(stoch_model,
                 Np=2000,params=params)
   
